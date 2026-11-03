@@ -1,0 +1,78 @@
+{
+  "name": "dsh-pixel-companions",
+  "version": "0.1.0",
+  "description": "A draggable animated pixel companion that floats anywhere over the DeepSeek Harness Web GUI and follows the agent: typing, working, waiting for you, done, sleeping.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kappyra/dsh-pixel-companions.git"
+  },
+  "homepage": "https://github.com/kappyra/dsh-pixel-companions#readme",
+  "bugs": {
+    "url": "https://github.com/kappyra/dsh-pixel-companions/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "draggable",
+    "pixel-art",
+    "companion",
+    "pet",
+    "web-ui"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json",
+    "./assets/*": "./assets/*"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "assets/**",
+    "src/**",
+    "tools/**",
+    "demo/**",
+    "docs/**",
+    "tests/**",
+    "desktop/**",
+    "README*.md",
+    "SECURITY.md",
+    "LICENSE",
+    "ASSETS_NOTICE.md"
+  ],
+  "icon": "./icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-session"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node tools/build-assets.mjs && node tools/build-client.mjs",
+    "assets": "node tools/build-assets.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "check:docs": "node tools/check-docs.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  },
+  "engines": {
+    "node": ">=22.6"
+  },
+  "author": "kappyra (https://github.com/kappyra)"
+}

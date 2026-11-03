@@ -1,0 +1,6 @@
+# Runtime dependencies for desktop/companion.py.
+# PyGObject normally comes from the distro (sudo apt install python3-gi
+# gir1.2-gtk-3.0); prefer the system package. Installing it via pip needs
+# build dependencies (girepository, glib headers).
+PyGObject>=3.42
+Pillow>=10

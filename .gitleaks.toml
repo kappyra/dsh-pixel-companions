@@ -1,0 +1,4 @@
+# The localStorage key is a namespaced setting name, not a credential.
+[allowlist]
+description = "localStorage preference key"
+regexes = ['''STORE_KEY\s*=\s*["']kappy\.pixel-companions\.ui\.v1["']''']
