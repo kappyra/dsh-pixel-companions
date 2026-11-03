@@ -49,6 +49,10 @@ settings popover that I keep in `localStorage` for this browser only (see Config
   companion or a new turn starts. **Details** opens the full answer as plain text in a
   scrollable panel; hovering dismisses the report, and the panel closes with ✕, Escape, or
   an outside press.
+- **Interactive reactions.** One left-click reacts to the current scene, a double click
+  gets the stronger "interrupted" reaction, and a right-click opens the settings panel
+  (the gear button and Shift+F10 do the same). I made an error comfort-able, made ten
+  minutes of work visibly exhausting, and waking the companion from sleep rather risky.
 - **30 animated WebP scenes** (15 per character) plus still PNGs for motion off; Deepy
   also has a desk-free `roaming` animation while dragged. I serve sprites from the
   plugin's own asset route and fetch them per scene, so the JS bundle stays small.

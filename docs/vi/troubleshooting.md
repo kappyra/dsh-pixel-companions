@@ -28,8 +28,8 @@
 
 - Kéo **chính sprite** (hoặc nút 🐳 khi bạn đồng hành đang bị ẩn), không kéo vùng trống quanh
   nó; lớp overlay vốn được thiết kế cho nhấp xuyên qua.
-- Nhấn và di chuyển hơn ngưỡng kéo 3 pixel trước khi thả. Một cú nhấn ngắn hơn được coi là
-  nhấp chuột và sẽ mở panel cài đặt thay vì kéo.
+- Nhấn và di chuyển hơn ngưỡng kéo 3 pixel trước khi thả. Một cú nhấn ngắn hơn là nhấp chuột: một
+  cú nhấp tạo phản ứng, hai cú nhấp nhanh phản ứng mạnh hơn, và nhấp chuột phải mở panel cài đặt.
 - Chuột, cảm ứng và bút cảm ứng đều dùng được; nút chuột phụ không bắt đầu thao tác kéo.
 - Nếu vị trí bị cũ hoặc con trỏ có vẻ bị kẹt, mở bánh răng và chọn **Đặt lại vị trí**, rồi thử
   lại.

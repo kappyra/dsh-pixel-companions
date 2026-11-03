@@ -50,6 +50,10 @@ tôi giữ trong `localStorage` chỉ cho trình duyệt này (xem phần Cấu 
   chuột lên bạn đồng hành hoặc một lượt mới bắt đầu. **Chi tiết** mở toàn bộ câu trả lời dưới
   dạng văn bản thuần trong một panel cuộn được; rê chuột lên bạn đồng hành sẽ đóng báo cáo, còn
   panel đóng bằng ✕, Escape hoặc nhấp ra ngoài.
+- **Phản ứng tương tác.** Một cú nhấp trái tạo phản ứng với cảnh hiện tại, nhấp đúp cho phản ứng
+  mạnh hơn kiểu “bị làm phiền”, còn nhấp chuột phải mở panel cài đặt (nút bánh răng và Shift+F10
+  cũng vậy). Tôi đã để trạng thái lỗi có thể được an ủi (comfort-able), khiến mười phút làm việc
+  trông rõ là kiệt sức, và việc đánh thức bạn đồng hành dậy khỏi giấc ngủ thì khá mạo hiểm.
 - **30 cảnh WebP động** (15 cảnh mỗi nhân vật) cùng ảnh PNG tĩnh cho khi tắt chuyển động; Deepy
   còn có hoạt ảnh `roaming` không bàn làm việc khi bị kéo. Tôi phục vụ sprite từ route asset
   riêng của plugin và tải theo từng cảnh, nhờ đó bundle JS vẫn nhỏ.

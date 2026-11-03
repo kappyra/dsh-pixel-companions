@@ -18,6 +18,7 @@ export function languageFromTag(tag: string | undefined): Language {
   return match === undefined ? 'en' : match.id
 }
 
+import type { ReactionId } from './reactions.ts'
 import type { Scene } from './state.ts'
 
 /** One caption per scene, in every supported language. */
@@ -43,6 +44,7 @@ export const SCENE_LABELS: Record<Scene, Record<Language, string>> = {
 export interface UiCopy {
   settingsTitle: string
   settingsAria: string
+  reactAria: string
   showCompanion: string
   character: string
   scale: string
@@ -75,6 +77,7 @@ export const UI_TEXT: Record<Language, UiCopy> = {
   en: {
     settingsTitle: 'Pixel Companions',
     settingsAria: 'Companion settings',
+    reactAria: 'Pet the companion. Shift+F10 opens settings.',
     showCompanion: 'Show companion',
     character: 'Character',
     scale: 'Size',
@@ -105,6 +108,7 @@ export const UI_TEXT: Record<Language, UiCopy> = {
   ru: {
     settingsTitle: 'Pixel Companions',
     settingsAria: 'Настройки компаньона',
+    reactAria: 'Погладить компаньона. Shift+F10 открывает настройки.',
     showCompanion: 'Показать компаньона',
     character: 'Персонаж',
     scale: 'Размер',
@@ -135,6 +139,7 @@ export const UI_TEXT: Record<Language, UiCopy> = {
   zh: {
     settingsTitle: 'Pixel Companions',
     settingsAria: '伴侣设置',
+    reactAria: '摸摸伴侣。Shift+F10 打开设置。',
     showCompanion: '显示伴侣',
     character: '角色',
     scale: '大小',
@@ -165,6 +170,7 @@ export const UI_TEXT: Record<Language, UiCopy> = {
   vi: {
     settingsTitle: 'Pixel Companions',
     settingsAria: 'Cài đặt bạn đồng hành',
+    reactAria: 'Vuốt ve bạn đồng hành. Shift+F10 mở cài đặt.',
     showCompanion: 'Hiện bạn đồng hành',
     character: 'Nhân vật',
     scale: 'Kích thước',
@@ -195,6 +201,7 @@ export const UI_TEXT: Record<Language, UiCopy> = {
   ja: {
     settingsTitle: 'Pixel Companions',
     settingsAria: 'コンパニオンの設定',
+    reactAria: 'コンパニオンをなでる。Shift+F10 で設定を開きます。',
     showCompanion: 'コンパニオンを表示',
     character: 'キャラクター',
     scale: 'サイズ',
@@ -225,6 +232,7 @@ export const UI_TEXT: Record<Language, UiCopy> = {
   ko: {
     settingsTitle: 'Pixel Companions',
     settingsAria: '컴패니언 설정',
+    reactAria: '컴패니언을 쓰다듬기. Shift+F10으로 설정을 엽니다.',
     showCompanion: '컴패니언 표시',
     character: '캐릭터',
     scale: '크기',
@@ -251,5 +259,129 @@ export const UI_TEXT: Record<Language, UiCopy> = {
     bigger: '크게',
     sizeTitle: '컴패니언 크기',
     sizeDescription: '페이지에 표시되는 픽셀 컴패니언의 크기입니다.',
+  },
+}
+
+/** One short line of dialogue per interaction, in every supported language. */
+export const REACTION_LINES: Record<Language, Record<ReactionId, string>> = {
+  en: {
+    error_cry: 'I… I messed up…',
+    error_consoled: 'Sniff… thank you.',
+    error_sniffle: 'Still a little sad…',
+    overwork_exhausted: 'So… tired…',
+    overwork_cry: 'I can\'t… anymore…',
+    work_angry: 'Hey! I\'m working here!',
+    sleep_bothered: 'Mmh… five more minutes…',
+    sleep_angry: 'I was sleeping!',
+    typing_annoyed: 'Don\'t poke me while I type!',
+    debugging_frustrated: 'This bug is mocking me.',
+    idle_petted: 'Hehe, that tickles.',
+    idle_shy: 'S-stop it…',
+    thinking_startled: 'Oh! I was thinking!',
+    waiting_pleading: 'Please… I need your answer.',
+    success_cheered: 'We did it!',
+    coffee_delighted: 'Coffee fixes everything.',
+    reading_disturbed: 'I\'m reading, you know.',
+    offline_worried: 'Are you still there?',
+  },
+  ru: {
+    error_cry: 'Я… я всё испортил…',
+    error_consoled: 'Шмыг… спасибо.',
+    error_sniffle: 'Всё ещё немного грустно…',
+    overwork_exhausted: 'Так… устал…',
+    overwork_cry: 'Я больше… не могу…',
+    work_angry: 'Эй! Я вообще-то работаю!',
+    sleep_bothered: 'М-м… ещё пять минут…',
+    sleep_angry: 'Я спал!',
+    typing_annoyed: 'Не тыкай, я печатаю!',
+    debugging_frustrated: 'Этот баг издевается надо мной.',
+    idle_petted: 'Хи-хи, щекотно.',
+    idle_shy: 'П-прекрати…',
+    thinking_startled: 'Ой! Я думал!',
+    waiting_pleading: 'Пожалуйста… мне нужен твой ответ.',
+    success_cheered: 'Мы справились!',
+    coffee_delighted: 'Кофе решает всё.',
+    reading_disturbed: 'Я, вообще-то, читаю.',
+    offline_worried: 'Ты ещё здесь?',
+  },
+  zh: {
+    error_cry: '我…我搞砸了…',
+    error_consoled: '呜…谢谢你。',
+    error_sniffle: '还是有点难过…',
+    overwork_exhausted: '好…累…',
+    overwork_cry: '我真的…撑不住了…',
+    work_angry: '喂！我在工作呢！',
+    sleep_bothered: '唔…再睡五分钟…',
+    sleep_angry: '我在睡觉！',
+    typing_annoyed: '别戳我，我在打字！',
+    debugging_frustrated: '这个 bug 在嘲笑我。',
+    idle_petted: '嘿嘿，好痒。',
+    idle_shy: '别、别这样…',
+    thinking_startled: '哎呀！我在想事情！',
+    waiting_pleading: '拜托…我需要你的回答。',
+    success_cheered: '我们做到了！',
+    coffee_delighted: '咖啡能解决一切。',
+    reading_disturbed: '我在看书呢。',
+    offline_worried: '你还在吗？',
+  },
+  vi: {
+    error_cry: 'Tôi… tôi làm hỏng rồi…',
+    error_consoled: 'Hức… cảm ơn bạn.',
+    error_sniffle: 'Vẫn còn hơi buồn…',
+    overwork_exhausted: 'Mệt… quá…',
+    overwork_cry: 'Tôi… không chịu nổi nữa…',
+    work_angry: 'Này! Tôi đang làm việc mà!',
+    sleep_bothered: 'Ưm… thêm năm phút nữa…',
+    sleep_angry: 'Tôi đang ngủ!',
+    typing_annoyed: 'Đừng chọc khi tôi đang gõ!',
+    debugging_frustrated: 'Con bug này đang chế giễu tôi.',
+    idle_petted: 'Hì hì, nhột quá.',
+    idle_shy: 'Đ-đừng mà…',
+    thinking_startled: 'Ối! Tôi đang nghĩ mà!',
+    waiting_pleading: 'Làm ơn… tôi cần câu trả lời của bạn.',
+    success_cheered: 'Chúng ta làm được rồi!',
+    coffee_delighted: 'Cà phê giải quyết mọi thứ.',
+    reading_disturbed: 'Tôi đang đọc sách mà.',
+    offline_worried: 'Bạn còn ở đó không?',
+  },
+  ja: {
+    error_cry: 'ぼく…やらかしちゃった…',
+    error_consoled: 'ぐす…ありがとう。',
+    error_sniffle: 'まだちょっと悲しい…',
+    overwork_exhausted: 'つ、疲れた…',
+    overwork_cry: 'もう…無理かも…',
+    work_angry: 'ちょっと！作業中だよ！',
+    sleep_bothered: 'ん…あと5分…',
+    sleep_angry: '寝てたのに！',
+    typing_annoyed: '入力中に突っつかないで！',
+    debugging_frustrated: 'このバグ、ぼくを笑ってる…',
+    idle_petted: 'えへへ、くすぐったい。',
+    idle_shy: 'や、やめて…',
+    thinking_startled: 'わっ！考えてたのに！',
+    waiting_pleading: 'お願い…返事がほしいな。',
+    success_cheered: 'やったね！',
+    coffee_delighted: 'コーヒーは正義。',
+    reading_disturbed: '読書中なんだけどな。',
+    offline_worried: 'まだいる…？',
+  },
+  ko: {
+    error_cry: '저… 실수했어요…',
+    error_consoled: '흑… 고마워요.',
+    error_sniffle: '아직 조금 슬퍼요…',
+    overwork_exhausted: '너무… 피곤해요…',
+    overwork_cry: '더는… 못 하겠어요…',
+    work_angry: '야! 나 일하는 중이야!',
+    sleep_bothered: '음… 5분만 더…',
+    sleep_angry: '자고 있었는데!',
+    typing_annoyed: '입력 중에 찌르지 마!',
+    debugging_frustrated: '이 버그가 나를 놀리는 것 같아.',
+    idle_petted: '히히, 간지러워.',
+    idle_shy: '그, 그만…',
+    thinking_startled: '앗! 생각 중이었는데!',
+    waiting_pleading: '제발… 대답이 필요해요.',
+    success_cheered: '해냈어요!',
+    coffee_delighted: '커피가 답이에요.',
+    reading_disturbed: '나 책 읽는 중이야.',
+    offline_worried: '아직 거기 있어요?',
   },
 }

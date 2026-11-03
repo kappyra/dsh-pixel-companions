@@ -21,14 +21,33 @@ hiện nút bánh răng (⚙) và, khi có cuộc trò chuyện đang mở, cả
 ## Di chuyển
 
 Kéo chính sprite bằng chuột trái, ngón tay hoặc bút cảm ứng. Một cú nhấn di chuyển ít hơn vài
-pixel được coi là nhấp chuột và sẽ mở panel cài đặt thay vì di chuyển bạn đồng hành, nên những
-rung tay nhỏ không làm bạn mất vị trí.
+pixel là nhấp chuột chứ không phải kéo: một cú nhấp tạo phản ứng với cảnh hiện tại, cú nhấp thứ
+hai thật nhanh cho phản ứng mạnh hơn, và nhấp chuột phải mở panel cài đặt (nút bánh răng và
+Shift+F10 cũng vậy).
 
 Vị trí được giữ trong cửa sổ, kiểm tra lại khi cửa sổ đổi kích thước hoặc khi bạn đồng hành đổi
 kích thước, và được lưu trong `localStorage` của trình duyệt này dưới key
 `kappy.pixel-companions.ui.v1`; tải lại trang sẽ khôi phục vị trí đó. Nếu bạn đồng hành rơi vào
 chỗ khó chịu, mở panel bánh răng và chọn **Đặt lại vị trí** để đưa nó về vị trí tự động ở góc
 dưới bên phải.
+
+## Tương tác
+
+Bạn đồng hành phản ứng với sự chú ý của bạn, nhưng một phản ứng không bao giờ làm thay đổi
+phiên, tín hiệu lỗi hay báo cáo hoàn thành.
+
+- Một cú nhấp trái: phản ứng nhẹ nhàng, tuỳ ngữ cảnh — vuốt ve, vẻ mặt giật mình, vẻ mặt cầu xin
+  khi đang chờ, reo mừng khi lượt đã xong, v.v.
+- Nhấp đúp trái: phản ứng mạnh hơn — khó chịu khi đang gõ hoặc đang làm việc, bị quấy rầy khi
+  đang đọc hoặc đang gỡ lỗi, ngại ngùng khi đang nghỉ, giận dữ khi bị đánh thức khỏi giấc ngủ.
+- Nhấp chuột phải: mở panel cài đặt; nút bánh răng và Shift+F10 cũng vậy.
+- Lỗi: bạn đồng hành khóc. Một cú nhấp sẽ an ủi nó thành vẻ mặt đáng yêu còn vương nước mắt, và
+  vệt nước mắt vẫn còn cho đến khi lỗi được xoá.
+- Mười phút agent làm việc thật sự: nó trông kiệt sức; nhấp chuột cho phản ứng xúc động, nhấp đúp
+  thì được phản ứng giận dữ.
+- Phản ứng chỉ là tạm thời và quay lại cảnh của agent. Với giảm chuyển động hoặc khi tắt chuyển
+  động, chúng dùng khung PNG tĩnh, và câu thoại dưới sprite được bản địa hoá trong cả sáu ngôn
+  ngữ.
 
 ## Gửi nhanh một tin nhắn
 

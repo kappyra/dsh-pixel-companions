@@ -31,7 +31,8 @@ English | [中文](zh/troubleshooting.md) | [Русский](ru/troubleshooting.
 - Drag the **sprite itself** (or the 🐳 button when the companion is hidden), not the
   empty space around it; the overlay layer is click-through by design.
 - Press and move more than the 3-pixel drag threshold before releasing. A shorter press is
-  treated as a click and opens the settings panel instead.
+  a click: one click reacts, two quick clicks react more strongly, and a right-click opens
+  the settings panel.
 - Mouse, touch, and pen all work; a secondary mouse button does not start a drag.
 - If the position is stale or the pointer seems stuck, open the gear and choose
   **Reset position**, then try again.

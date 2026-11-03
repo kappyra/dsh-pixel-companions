@@ -30,6 +30,15 @@ const SCENES = [
   'working', 'success', 'waiting', 'error', 'tired', 'coffee',
   'sleeping', 'debugging', 'offline',
 ]
+/** Interaction-only animations layered over a scene; additive, never a base state. */
+const REACTIONS = [
+  'error_cry', 'error_consoled', 'error_sniffle',
+  'overwork_exhausted', 'overwork_cry', 'work_angry',
+  'sleep_bothered', 'sleep_angry', 'typing_annoyed',
+  'debugging_frustrated', 'idle_petted', 'idle_shy',
+  'thinking_startled', 'waiting_pleading', 'success_cheered',
+  'coffee_delighted', 'reading_disturbed', 'offline_worried',
+]
 
 /** First bytes of the SHA-1 digest of a file, used as a cache-busting revision. */
 function revision(file) {
@@ -66,6 +75,9 @@ function main() {
     }
     for (const scene of SCENES) {
       if (scenes[scene] === undefined) problems.push(`${character}/${scene} pair is incomplete or missing`)
+    }
+    for (const reaction of REACTIONS) {
+      if (scenes[reaction] === undefined) problems.push(`${character}/${reaction} reaction pair is incomplete or missing`)
     }
     manifest[character] = scenes
   }

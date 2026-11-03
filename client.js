@@ -50,7 +50,7 @@ function assetUrl(reference) {
 }
 
 // src/client/assets.generated.ts
-var COMPANION_ASSETS = { "girl": { "coffee": { "webp": "plugins/dsh-pixel-companions/assets/girl/coffee.webp?v=6443cb3c", "png": "plugins/dsh-pixel-companions/assets/girl/coffee.png?v=94644d3c" }, "debugging": { "webp": "plugins/dsh-pixel-companions/assets/girl/debugging.webp?v=93371999", "png": "plugins/dsh-pixel-companions/assets/girl/debugging.png?v=95d4a08d" }, "error": { "webp": "plugins/dsh-pixel-companions/assets/girl/error.webp?v=030b8811", "png": "plugins/dsh-pixel-companions/assets/girl/error.png?v=bdad9d56" }, "idle": { "webp": "plugins/dsh-pixel-companions/assets/girl/idle.webp?v=8a2e816c", "png": "plugins/dsh-pixel-companions/assets/girl/idle.png?v=b9cf5009" }, "offline": { "webp": "plugins/dsh-pixel-companions/assets/girl/offline.webp?v=55419597", "png": "plugins/dsh-pixel-companions/assets/girl/offline.png?v=fd460bd6" }, "planning": { "webp": "plugins/dsh-pixel-companions/assets/girl/planning.webp?v=95fc4eef", "png": "plugins/dsh-pixel-companions/assets/girl/planning.png?v=96181e9b" }, "reading": { "webp": "plugins/dsh-pixel-companions/assets/girl/reading.webp?v=3a2dc2c0", "png": "plugins/dsh-pixel-companions/assets/girl/reading.png?v=6b85d85e" }, "searching": { "webp": "plugins/dsh-pixel-companions/assets/girl/searching.webp?v=25f4cd16", "png": "plugins/dsh-pixel-companions/assets/girl/searching.png?v=dd39ef3b" }, "sleeping": { "webp": "plugins/dsh-pixel-companions/assets/girl/sleeping.webp?v=2ff57cc6", "png": "plugins/dsh-pixel-companions/assets/girl/sleeping.png?v=6ad4a0e4" }, "success": { "webp": "plugins/dsh-pixel-companions/assets/girl/success.webp?v=0ff23ca6", "png": "plugins/dsh-pixel-companions/assets/girl/success.png?v=c67d8fa0" }, "thinking": { "webp": "plugins/dsh-pixel-companions/assets/girl/thinking.webp?v=a11de248", "png": "plugins/dsh-pixel-companions/assets/girl/thinking.png?v=eaa7d3df" }, "tired": { "webp": "plugins/dsh-pixel-companions/assets/girl/tired.webp?v=068706d7", "png": "plugins/dsh-pixel-companions/assets/girl/tired.png?v=82008acc" }, "typing": { "webp": "plugins/dsh-pixel-companions/assets/girl/typing.webp?v=c9a86d42", "png": "plugins/dsh-pixel-companions/assets/girl/typing.png?v=4d731555" }, "waiting": { "webp": "plugins/dsh-pixel-companions/assets/girl/waiting.webp?v=069505e4", "png": "plugins/dsh-pixel-companions/assets/girl/waiting.png?v=efea7221" }, "working": { "webp": "plugins/dsh-pixel-companions/assets/girl/working.webp?v=d96dc53a", "png": "plugins/dsh-pixel-companions/assets/girl/working.png?v=f5089ad3" } }, "whale": { "coffee": { "webp": "plugins/dsh-pixel-companions/assets/whale/coffee.webp?v=ad5601d4", "png": "plugins/dsh-pixel-companions/assets/whale/coffee.png?v=c7d7f760" }, "debugging": { "webp": "plugins/dsh-pixel-companions/assets/whale/debugging.webp?v=cafea239", "png": "plugins/dsh-pixel-companions/assets/whale/debugging.png?v=6671ae03" }, "error": { "webp": "plugins/dsh-pixel-companions/assets/whale/error.webp?v=da6216fb", "png": "plugins/dsh-pixel-companions/assets/whale/error.png?v=ac8841b3" }, "idle": { "webp": "plugins/dsh-pixel-companions/assets/whale/idle.webp?v=2869b80d", "png": "plugins/dsh-pixel-companions/assets/whale/idle.png?v=476c99e5" }, "offline": { "webp": "plugins/dsh-pixel-companions/assets/whale/offline.webp?v=01a9a79e", "png": "plugins/dsh-pixel-companions/assets/whale/offline.png?v=db3c1fae" }, "planning": { "webp": "plugins/dsh-pixel-companions/assets/whale/planning.webp?v=b932ed2c", "png": "plugins/dsh-pixel-companions/assets/whale/planning.png?v=a06af7a5" }, "reading": { "webp": "plugins/dsh-pixel-companions/assets/whale/reading.webp?v=fb9f1421", "png": "plugins/dsh-pixel-companions/assets/whale/reading.png?v=fd27cec5" }, "roaming": { "webp": "plugins/dsh-pixel-companions/assets/whale/roaming.webp?v=e9e7013d", "png": "plugins/dsh-pixel-companions/assets/whale/roaming.png?v=e3b4df15" }, "searching": { "webp": "plugins/dsh-pixel-companions/assets/whale/searching.webp?v=0e7ddf21", "png": "plugins/dsh-pixel-companions/assets/whale/searching.png?v=af4822e7" }, "sleeping": { "webp": "plugins/dsh-pixel-companions/assets/whale/sleeping.webp?v=e9c2bcff", "png": "plugins/dsh-pixel-companions/assets/whale/sleeping.png?v=aeb2e2a0" }, "success": { "webp": "plugins/dsh-pixel-companions/assets/whale/success.webp?v=dfc19676", "png": "plugins/dsh-pixel-companions/assets/whale/success.png?v=26859dd0" }, "thinking": { "webp": "plugins/dsh-pixel-companions/assets/whale/thinking.webp?v=9bec3f8c", "png": "plugins/dsh-pixel-companions/assets/whale/thinking.png?v=c8114d16" }, "tired": { "webp": "plugins/dsh-pixel-companions/assets/whale/tired.webp?v=1b4d6526", "png": "plugins/dsh-pixel-companions/assets/whale/tired.png?v=b616b969" }, "typing": { "webp": "plugins/dsh-pixel-companions/assets/whale/typing.webp?v=64dc6297", "png": "plugins/dsh-pixel-companions/assets/whale/typing.png?v=b8152221" }, "waiting": { "webp": "plugins/dsh-pixel-companions/assets/whale/waiting.webp?v=a4e8493b", "png": "plugins/dsh-pixel-companions/assets/whale/waiting.png?v=16125f94" }, "working": { "webp": "plugins/dsh-pixel-companions/assets/whale/working.webp?v=4019b00e", "png": "plugins/dsh-pixel-companions/assets/whale/working.png?v=6671ae03" } } };
+var COMPANION_ASSETS = { "girl": { "coffee": { "webp": "plugins/dsh-pixel-companions/assets/girl/coffee.webp?v=6443cb3c", "png": "plugins/dsh-pixel-companions/assets/girl/coffee.png?v=94644d3c" }, "coffee_delighted": { "webp": "plugins/dsh-pixel-companions/assets/girl/coffee_delighted.webp?v=3584d548", "png": "plugins/dsh-pixel-companions/assets/girl/coffee_delighted.png?v=1ac42c47" }, "debugging": { "webp": "plugins/dsh-pixel-companions/assets/girl/debugging.webp?v=93371999", "png": "plugins/dsh-pixel-companions/assets/girl/debugging.png?v=95d4a08d" }, "debugging_frustrated": { "webp": "plugins/dsh-pixel-companions/assets/girl/debugging_frustrated.webp?v=d60cf913", "png": "plugins/dsh-pixel-companions/assets/girl/debugging_frustrated.png?v=2e70ea68" }, "error": { "webp": "plugins/dsh-pixel-companions/assets/girl/error.webp?v=030b8811", "png": "plugins/dsh-pixel-companions/assets/girl/error.png?v=bdad9d56" }, "error_consoled": { "webp": "plugins/dsh-pixel-companions/assets/girl/error_consoled.webp?v=e0d490ac", "png": "plugins/dsh-pixel-companions/assets/girl/error_consoled.png?v=41b3380b" }, "error_cry": { "webp": "plugins/dsh-pixel-companions/assets/girl/error_cry.webp?v=055c2a7b", "png": "plugins/dsh-pixel-companions/assets/girl/error_cry.png?v=0b5bdd28" }, "error_sniffle": { "webp": "plugins/dsh-pixel-companions/assets/girl/error_sniffle.webp?v=02e4609e", "png": "plugins/dsh-pixel-companions/assets/girl/error_sniffle.png?v=77ac92ce" }, "idle": { "webp": "plugins/dsh-pixel-companions/assets/girl/idle.webp?v=8a2e816c", "png": "plugins/dsh-pixel-companions/assets/girl/idle.png?v=b9cf5009" }, "idle_petted": { "webp": "plugins/dsh-pixel-companions/assets/girl/idle_petted.webp?v=8ceee147", "png": "plugins/dsh-pixel-companions/assets/girl/idle_petted.png?v=7635f76d" }, "idle_shy": { "webp": "plugins/dsh-pixel-companions/assets/girl/idle_shy.webp?v=781739c6", "png": "plugins/dsh-pixel-companions/assets/girl/idle_shy.png?v=7b4225fa" }, "offline": { "webp": "plugins/dsh-pixel-companions/assets/girl/offline.webp?v=55419597", "png": "plugins/dsh-pixel-companions/assets/girl/offline.png?v=fd460bd6" }, "offline_worried": { "webp": "plugins/dsh-pixel-companions/assets/girl/offline_worried.webp?v=28165e39", "png": "plugins/dsh-pixel-companions/assets/girl/offline_worried.png?v=3320e91e" }, "overwork_cry": { "webp": "plugins/dsh-pixel-companions/assets/girl/overwork_cry.webp?v=7ff118b5", "png": "plugins/dsh-pixel-companions/assets/girl/overwork_cry.png?v=85c3b41b" }, "overwork_exhausted": { "webp": "plugins/dsh-pixel-companions/assets/girl/overwork_exhausted.webp?v=f00f3744", "png": "plugins/dsh-pixel-companions/assets/girl/overwork_exhausted.png?v=0d0baf7f" }, "planning": { "webp": "plugins/dsh-pixel-companions/assets/girl/planning.webp?v=95fc4eef", "png": "plugins/dsh-pixel-companions/assets/girl/planning.png?v=96181e9b" }, "reading": { "webp": "plugins/dsh-pixel-companions/assets/girl/reading.webp?v=3a2dc2c0", "png": "plugins/dsh-pixel-companions/assets/girl/reading.png?v=6b85d85e" }, "reading_disturbed": { "webp": "plugins/dsh-pixel-companions/assets/girl/reading_disturbed.webp?v=33ae7277", "png": "plugins/dsh-pixel-companions/assets/girl/reading_disturbed.png?v=48de6f46" }, "searching": { "webp": "plugins/dsh-pixel-companions/assets/girl/searching.webp?v=25f4cd16", "png": "plugins/dsh-pixel-companions/assets/girl/searching.png?v=dd39ef3b" }, "sleep_angry": { "webp": "plugins/dsh-pixel-companions/assets/girl/sleep_angry.webp?v=2fc3e31b", "png": "plugins/dsh-pixel-companions/assets/girl/sleep_angry.png?v=87254908" }, "sleep_bothered": { "webp": "plugins/dsh-pixel-companions/assets/girl/sleep_bothered.webp?v=6a1c6cc0", "png": "plugins/dsh-pixel-companions/assets/girl/sleep_bothered.png?v=f5a84857" }, "sleeping": { "webp": "plugins/dsh-pixel-companions/assets/girl/sleeping.webp?v=2ff57cc6", "png": "plugins/dsh-pixel-companions/assets/girl/sleeping.png?v=6ad4a0e4" }, "success": { "webp": "plugins/dsh-pixel-companions/assets/girl/success.webp?v=0ff23ca6", "png": "plugins/dsh-pixel-companions/assets/girl/success.png?v=c67d8fa0" }, "success_cheered": { "webp": "plugins/dsh-pixel-companions/assets/girl/success_cheered.webp?v=c0c2e707", "png": "plugins/dsh-pixel-companions/assets/girl/success_cheered.png?v=c43396f9" }, "thinking": { "webp": "plugins/dsh-pixel-companions/assets/girl/thinking.webp?v=a11de248", "png": "plugins/dsh-pixel-companions/assets/girl/thinking.png?v=eaa7d3df" }, "thinking_startled": { "webp": "plugins/dsh-pixel-companions/assets/girl/thinking_startled.webp?v=44a27ebb", "png": "plugins/dsh-pixel-companions/assets/girl/thinking_startled.png?v=84904eea" }, "tired": { "webp": "plugins/dsh-pixel-companions/assets/girl/tired.webp?v=068706d7", "png": "plugins/dsh-pixel-companions/assets/girl/tired.png?v=82008acc" }, "typing": { "webp": "plugins/dsh-pixel-companions/assets/girl/typing.webp?v=c9a86d42", "png": "plugins/dsh-pixel-companions/assets/girl/typing.png?v=4d731555" }, "typing_annoyed": { "webp": "plugins/dsh-pixel-companions/assets/girl/typing_annoyed.webp?v=4ae9908a", "png": "plugins/dsh-pixel-companions/assets/girl/typing_annoyed.png?v=84b6397b" }, "waiting": { "webp": "plugins/dsh-pixel-companions/assets/girl/waiting.webp?v=069505e4", "png": "plugins/dsh-pixel-companions/assets/girl/waiting.png?v=efea7221" }, "waiting_pleading": { "webp": "plugins/dsh-pixel-companions/assets/girl/waiting_pleading.webp?v=d6da2a16", "png": "plugins/dsh-pixel-companions/assets/girl/waiting_pleading.png?v=97a65fa2" }, "work_angry": { "webp": "plugins/dsh-pixel-companions/assets/girl/work_angry.webp?v=d7eca14e", "png": "plugins/dsh-pixel-companions/assets/girl/work_angry.png?v=ccb85109" }, "working": { "webp": "plugins/dsh-pixel-companions/assets/girl/working.webp?v=d96dc53a", "png": "plugins/dsh-pixel-companions/assets/girl/working.png?v=f5089ad3" } }, "whale": { "coffee": { "webp": "plugins/dsh-pixel-companions/assets/whale/coffee.webp?v=ad5601d4", "png": "plugins/dsh-pixel-companions/assets/whale/coffee.png?v=c7d7f760" }, "coffee_delighted": { "webp": "plugins/dsh-pixel-companions/assets/whale/coffee_delighted.webp?v=a5fb9a8f", "png": "plugins/dsh-pixel-companions/assets/whale/coffee_delighted.png?v=918bfd90" }, "debugging": { "webp": "plugins/dsh-pixel-companions/assets/whale/debugging.webp?v=cafea239", "png": "plugins/dsh-pixel-companions/assets/whale/debugging.png?v=6671ae03" }, "debugging_frustrated": { "webp": "plugins/dsh-pixel-companions/assets/whale/debugging_frustrated.webp?v=d071e5c8", "png": "plugins/dsh-pixel-companions/assets/whale/debugging_frustrated.png?v=28ca13ed" }, "error": { "webp": "plugins/dsh-pixel-companions/assets/whale/error.webp?v=da6216fb", "png": "plugins/dsh-pixel-companions/assets/whale/error.png?v=ac8841b3" }, "error_consoled": { "webp": "plugins/dsh-pixel-companions/assets/whale/error_consoled.webp?v=e63cd6ae", "png": "plugins/dsh-pixel-companions/assets/whale/error_consoled.png?v=6e2d27d2" }, "error_cry": { "webp": "plugins/dsh-pixel-companions/assets/whale/error_cry.webp?v=3d46f75f", "png": "plugins/dsh-pixel-companions/assets/whale/error_cry.png?v=3574a9f5" }, "error_sniffle": { "webp": "plugins/dsh-pixel-companions/assets/whale/error_sniffle.webp?v=f1b9a8c0", "png": "plugins/dsh-pixel-companions/assets/whale/error_sniffle.png?v=6bd9e361" }, "idle": { "webp": "plugins/dsh-pixel-companions/assets/whale/idle.webp?v=2869b80d", "png": "plugins/dsh-pixel-companions/assets/whale/idle.png?v=476c99e5" }, "idle_petted": { "webp": "plugins/dsh-pixel-companions/assets/whale/idle_petted.webp?v=c40756bc", "png": "plugins/dsh-pixel-companions/assets/whale/idle_petted.png?v=53103114" }, "idle_shy": { "webp": "plugins/dsh-pixel-companions/assets/whale/idle_shy.webp?v=c0a7dea6", "png": "plugins/dsh-pixel-companions/assets/whale/idle_shy.png?v=d11b8c1d" }, "offline": { "webp": "plugins/dsh-pixel-companions/assets/whale/offline.webp?v=01a9a79e", "png": "plugins/dsh-pixel-companions/assets/whale/offline.png?v=db3c1fae" }, "offline_worried": { "webp": "plugins/dsh-pixel-companions/assets/whale/offline_worried.webp?v=9056dbb3", "png": "plugins/dsh-pixel-companions/assets/whale/offline_worried.png?v=b3fb921c" }, "overwork_cry": { "webp": "plugins/dsh-pixel-companions/assets/whale/overwork_cry.webp?v=6534a033", "png": "plugins/dsh-pixel-companions/assets/whale/overwork_cry.png?v=568e7ef1" }, "overwork_exhausted": { "webp": "plugins/dsh-pixel-companions/assets/whale/overwork_exhausted.webp?v=92dacf03", "png": "plugins/dsh-pixel-companions/assets/whale/overwork_exhausted.png?v=ea6ba631" }, "planning": { "webp": "plugins/dsh-pixel-companions/assets/whale/planning.webp?v=b932ed2c", "png": "plugins/dsh-pixel-companions/assets/whale/planning.png?v=a06af7a5" }, "reading": { "webp": "plugins/dsh-pixel-companions/assets/whale/reading.webp?v=fb9f1421", "png": "plugins/dsh-pixel-companions/assets/whale/reading.png?v=fd27cec5" }, "reading_disturbed": { "webp": "plugins/dsh-pixel-companions/assets/whale/reading_disturbed.webp?v=c3cbd47c", "png": "plugins/dsh-pixel-companions/assets/whale/reading_disturbed.png?v=a4f79b1a" }, "roaming": { "webp": "plugins/dsh-pixel-companions/assets/whale/roaming.webp?v=e9e7013d", "png": "plugins/dsh-pixel-companions/assets/whale/roaming.png?v=e3b4df15" }, "searching": { "webp": "plugins/dsh-pixel-companions/assets/whale/searching.webp?v=0e7ddf21", "png": "plugins/dsh-pixel-companions/assets/whale/searching.png?v=af4822e7" }, "sleep_angry": { "webp": "plugins/dsh-pixel-companions/assets/whale/sleep_angry.webp?v=b82b3390", "png": "plugins/dsh-pixel-companions/assets/whale/sleep_angry.png?v=b72ba9f9" }, "sleep_bothered": { "webp": "plugins/dsh-pixel-companions/assets/whale/sleep_bothered.webp?v=1fdc1715", "png": "plugins/dsh-pixel-companions/assets/whale/sleep_bothered.png?v=8fec218a" }, "sleeping": { "webp": "plugins/dsh-pixel-companions/assets/whale/sleeping.webp?v=e9c2bcff", "png": "plugins/dsh-pixel-companions/assets/whale/sleeping.png?v=aeb2e2a0" }, "success": { "webp": "plugins/dsh-pixel-companions/assets/whale/success.webp?v=dfc19676", "png": "plugins/dsh-pixel-companions/assets/whale/success.png?v=26859dd0" }, "success_cheered": { "webp": "plugins/dsh-pixel-companions/assets/whale/success_cheered.webp?v=2faa3bcf", "png": "plugins/dsh-pixel-companions/assets/whale/success_cheered.png?v=3526bc6b" }, "thinking": { "webp": "plugins/dsh-pixel-companions/assets/whale/thinking.webp?v=9bec3f8c", "png": "plugins/dsh-pixel-companions/assets/whale/thinking.png?v=c8114d16" }, "thinking_startled": { "webp": "plugins/dsh-pixel-companions/assets/whale/thinking_startled.webp?v=bc6b894d", "png": "plugins/dsh-pixel-companions/assets/whale/thinking_startled.png?v=7e2bf815" }, "tired": { "webp": "plugins/dsh-pixel-companions/assets/whale/tired.webp?v=1b4d6526", "png": "plugins/dsh-pixel-companions/assets/whale/tired.png?v=b616b969" }, "typing": { "webp": "plugins/dsh-pixel-companions/assets/whale/typing.webp?v=64dc6297", "png": "plugins/dsh-pixel-companions/assets/whale/typing.png?v=b8152221" }, "typing_annoyed": { "webp": "plugins/dsh-pixel-companions/assets/whale/typing_annoyed.webp?v=3e550678", "png": "plugins/dsh-pixel-companions/assets/whale/typing_annoyed.png?v=f9cbb783" }, "waiting": { "webp": "plugins/dsh-pixel-companions/assets/whale/waiting.webp?v=a4e8493b", "png": "plugins/dsh-pixel-companions/assets/whale/waiting.png?v=16125f94" }, "waiting_pleading": { "webp": "plugins/dsh-pixel-companions/assets/whale/waiting_pleading.webp?v=aa68a874", "png": "plugins/dsh-pixel-companions/assets/whale/waiting_pleading.png?v=5e8fffaf" }, "work_angry": { "webp": "plugins/dsh-pixel-companions/assets/whale/work_angry.webp?v=87dd2f44", "png": "plugins/dsh-pixel-companions/assets/whale/work_angry.png?v=f3b2f2fa" }, "working": { "webp": "plugins/dsh-pixel-companions/assets/whale/working.webp?v=4019b00e", "png": "plugins/dsh-pixel-companions/assets/whale/working.png?v=6671ae03" } } };
 
 // src/client/bridge.ts
 var import_react = require("react");
@@ -430,6 +430,7 @@ var UI_TEXT = {
   en: {
     settingsTitle: "Pixel Companions",
     settingsAria: "Companion settings",
+    reactAria: "Pet the companion. Shift+F10 opens settings.",
     showCompanion: "Show companion",
     character: "Character",
     scale: "Size",
@@ -460,6 +461,7 @@ var UI_TEXT = {
   ru: {
     settingsTitle: "Pixel Companions",
     settingsAria: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u043A\u043E\u043C\u043F\u0430\u043D\u044C\u043E\u043D\u0430",
+    reactAria: "\u041F\u043E\u0433\u043B\u0430\u0434\u0438\u0442\u044C \u043A\u043E\u043C\u043F\u0430\u043D\u044C\u043E\u043D\u0430. Shift+F10 \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u0435\u0442 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438.",
     showCompanion: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043A\u043E\u043C\u043F\u0430\u043D\u044C\u043E\u043D\u0430",
     character: "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436",
     scale: "\u0420\u0430\u0437\u043C\u0435\u0440",
@@ -490,6 +492,7 @@ var UI_TEXT = {
   zh: {
     settingsTitle: "Pixel Companions",
     settingsAria: "\u4F34\u4FA3\u8BBE\u7F6E",
+    reactAria: "\u6478\u6478\u4F34\u4FA3\u3002Shift+F10 \u6253\u5F00\u8BBE\u7F6E\u3002",
     showCompanion: "\u663E\u793A\u4F34\u4FA3",
     character: "\u89D2\u8272",
     scale: "\u5927\u5C0F",
@@ -520,6 +523,7 @@ var UI_TEXT = {
   vi: {
     settingsTitle: "Pixel Companions",
     settingsAria: "C\xE0i \u0111\u1EB7t b\u1EA1n \u0111\u1ED3ng h\xE0nh",
+    reactAria: "Vu\u1ED1t ve b\u1EA1n \u0111\u1ED3ng h\xE0nh. Shift+F10 m\u1EDF c\xE0i \u0111\u1EB7t.",
     showCompanion: "Hi\u1EC7n b\u1EA1n \u0111\u1ED3ng h\xE0nh",
     character: "Nh\xE2n v\u1EADt",
     scale: "K\xEDch th\u01B0\u1EDBc",
@@ -550,6 +554,7 @@ var UI_TEXT = {
   ja: {
     settingsTitle: "Pixel Companions",
     settingsAria: "\u30B3\u30F3\u30D1\u30CB\u30AA\u30F3\u306E\u8A2D\u5B9A",
+    reactAria: "\u30B3\u30F3\u30D1\u30CB\u30AA\u30F3\u3092\u306A\u3067\u308B\u3002Shift+F10 \u3067\u8A2D\u5B9A\u3092\u958B\u304D\u307E\u3059\u3002",
     showCompanion: "\u30B3\u30F3\u30D1\u30CB\u30AA\u30F3\u3092\u8868\u793A",
     character: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC",
     scale: "\u30B5\u30A4\u30BA",
@@ -580,6 +585,7 @@ var UI_TEXT = {
   ko: {
     settingsTitle: "Pixel Companions",
     settingsAria: "\uCEF4\uD328\uB2C8\uC5B8 \uC124\uC815",
+    reactAria: "\uCEF4\uD328\uB2C8\uC5B8\uC744 \uC4F0\uB2E4\uB4EC\uAE30. Shift+F10\uC73C\uB85C \uC124\uC815\uC744 \uC5FD\uB2C8\uB2E4.",
     showCompanion: "\uCEF4\uD328\uB2C8\uC5B8 \uD45C\uC2DC",
     character: "\uCE90\uB9AD\uD130",
     scale: "\uD06C\uAE30",
@@ -606,6 +612,128 @@ var UI_TEXT = {
     bigger: "\uD06C\uAC8C",
     sizeTitle: "\uCEF4\uD328\uB2C8\uC5B8 \uD06C\uAE30",
     sizeDescription: "\uD398\uC774\uC9C0\uC5D0 \uD45C\uC2DC\uB418\uB294 \uD53D\uC140 \uCEF4\uD328\uB2C8\uC5B8\uC758 \uD06C\uAE30\uC785\uB2C8\uB2E4."
+  }
+};
+var REACTION_LINES = {
+  en: {
+    error_cry: "I\u2026 I messed up\u2026",
+    error_consoled: "Sniff\u2026 thank you.",
+    error_sniffle: "Still a little sad\u2026",
+    overwork_exhausted: "So\u2026 tired\u2026",
+    overwork_cry: "I can't\u2026 anymore\u2026",
+    work_angry: "Hey! I'm working here!",
+    sleep_bothered: "Mmh\u2026 five more minutes\u2026",
+    sleep_angry: "I was sleeping!",
+    typing_annoyed: "Don't poke me while I type!",
+    debugging_frustrated: "This bug is mocking me.",
+    idle_petted: "Hehe, that tickles.",
+    idle_shy: "S-stop it\u2026",
+    thinking_startled: "Oh! I was thinking!",
+    waiting_pleading: "Please\u2026 I need your answer.",
+    success_cheered: "We did it!",
+    coffee_delighted: "Coffee fixes everything.",
+    reading_disturbed: "I'm reading, you know.",
+    offline_worried: "Are you still there?"
+  },
+  ru: {
+    error_cry: "\u042F\u2026 \u044F \u0432\u0441\u0451 \u0438\u0441\u043F\u043E\u0440\u0442\u0438\u043B\u2026",
+    error_consoled: "\u0428\u043C\u044B\u0433\u2026 \u0441\u043F\u0430\u0441\u0438\u0431\u043E.",
+    error_sniffle: "\u0412\u0441\u0451 \u0435\u0449\u0451 \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0433\u0440\u0443\u0441\u0442\u043D\u043E\u2026",
+    overwork_exhausted: "\u0422\u0430\u043A\u2026 \u0443\u0441\u0442\u0430\u043B\u2026",
+    overwork_cry: "\u042F \u0431\u043E\u043B\u044C\u0448\u0435\u2026 \u043D\u0435 \u043C\u043E\u0433\u0443\u2026",
+    work_angry: "\u042D\u0439! \u042F \u0432\u043E\u043E\u0431\u0449\u0435-\u0442\u043E \u0440\u0430\u0431\u043E\u0442\u0430\u044E!",
+    sleep_bothered: "\u041C-\u043C\u2026 \u0435\u0449\u0451 \u043F\u044F\u0442\u044C \u043C\u0438\u043D\u0443\u0442\u2026",
+    sleep_angry: "\u042F \u0441\u043F\u0430\u043B!",
+    typing_annoyed: "\u041D\u0435 \u0442\u044B\u043A\u0430\u0439, \u044F \u043F\u0435\u0447\u0430\u0442\u0430\u044E!",
+    debugging_frustrated: "\u042D\u0442\u043E\u0442 \u0431\u0430\u0433 \u0438\u0437\u0434\u0435\u0432\u0430\u0435\u0442\u0441\u044F \u043D\u0430\u0434\u043E \u043C\u043D\u043E\u0439.",
+    idle_petted: "\u0425\u0438-\u0445\u0438, \u0449\u0435\u043A\u043E\u0442\u043D\u043E.",
+    idle_shy: "\u041F-\u043F\u0440\u0435\u043A\u0440\u0430\u0442\u0438\u2026",
+    thinking_startled: "\u041E\u0439! \u042F \u0434\u0443\u043C\u0430\u043B!",
+    waiting_pleading: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430\u2026 \u043C\u043D\u0435 \u043D\u0443\u0436\u0435\u043D \u0442\u0432\u043E\u0439 \u043E\u0442\u0432\u0435\u0442.",
+    success_cheered: "\u041C\u044B \u0441\u043F\u0440\u0430\u0432\u0438\u043B\u0438\u0441\u044C!",
+    coffee_delighted: "\u041A\u043E\u0444\u0435 \u0440\u0435\u0448\u0430\u0435\u0442 \u0432\u0441\u0451.",
+    reading_disturbed: "\u042F, \u0432\u043E\u043E\u0431\u0449\u0435-\u0442\u043E, \u0447\u0438\u0442\u0430\u044E.",
+    offline_worried: "\u0422\u044B \u0435\u0449\u0451 \u0437\u0434\u0435\u0441\u044C?"
+  },
+  zh: {
+    error_cry: "\u6211\u2026\u6211\u641E\u7838\u4E86\u2026",
+    error_consoled: "\u545C\u2026\u8C22\u8C22\u4F60\u3002",
+    error_sniffle: "\u8FD8\u662F\u6709\u70B9\u96BE\u8FC7\u2026",
+    overwork_exhausted: "\u597D\u2026\u7D2F\u2026",
+    overwork_cry: "\u6211\u771F\u7684\u2026\u6491\u4E0D\u4F4F\u4E86\u2026",
+    work_angry: "\u5582\uFF01\u6211\u5728\u5DE5\u4F5C\u5462\uFF01",
+    sleep_bothered: "\u5514\u2026\u518D\u7761\u4E94\u5206\u949F\u2026",
+    sleep_angry: "\u6211\u5728\u7761\u89C9\uFF01",
+    typing_annoyed: "\u522B\u6233\u6211\uFF0C\u6211\u5728\u6253\u5B57\uFF01",
+    debugging_frustrated: "\u8FD9\u4E2A bug \u5728\u5632\u7B11\u6211\u3002",
+    idle_petted: "\u563F\u563F\uFF0C\u597D\u75D2\u3002",
+    idle_shy: "\u522B\u3001\u522B\u8FD9\u6837\u2026",
+    thinking_startled: "\u54CE\u5440\uFF01\u6211\u5728\u60F3\u4E8B\u60C5\uFF01",
+    waiting_pleading: "\u62DC\u6258\u2026\u6211\u9700\u8981\u4F60\u7684\u56DE\u7B54\u3002",
+    success_cheered: "\u6211\u4EEC\u505A\u5230\u4E86\uFF01",
+    coffee_delighted: "\u5496\u5561\u80FD\u89E3\u51B3\u4E00\u5207\u3002",
+    reading_disturbed: "\u6211\u5728\u770B\u4E66\u5462\u3002",
+    offline_worried: "\u4F60\u8FD8\u5728\u5417\uFF1F"
+  },
+  vi: {
+    error_cry: "T\xF4i\u2026 t\xF4i l\xE0m h\u1ECFng r\u1ED3i\u2026",
+    error_consoled: "H\u1EE9c\u2026 c\u1EA3m \u01A1n b\u1EA1n.",
+    error_sniffle: "V\u1EABn c\xF2n h\u01A1i bu\u1ED3n\u2026",
+    overwork_exhausted: "M\u1EC7t\u2026 qu\xE1\u2026",
+    overwork_cry: "T\xF4i\u2026 kh\xF4ng ch\u1ECBu n\u1ED5i n\u1EEFa\u2026",
+    work_angry: "N\xE0y! T\xF4i \u0111ang l\xE0m vi\u1EC7c m\xE0!",
+    sleep_bothered: "\u01AFm\u2026 th\xEAm n\u0103m ph\xFAt n\u1EEFa\u2026",
+    sleep_angry: "T\xF4i \u0111ang ng\u1EE7!",
+    typing_annoyed: "\u0110\u1EEBng ch\u1ECDc khi t\xF4i \u0111ang g\xF5!",
+    debugging_frustrated: "Con bug n\xE0y \u0111ang ch\u1EBF gi\u1EC5u t\xF4i.",
+    idle_petted: "H\xEC h\xEC, nh\u1ED9t qu\xE1.",
+    idle_shy: "\u0110-\u0111\u1EEBng m\xE0\u2026",
+    thinking_startled: "\u1ED0i! T\xF4i \u0111ang ngh\u0129 m\xE0!",
+    waiting_pleading: "L\xE0m \u01A1n\u2026 t\xF4i c\u1EA7n c\xE2u tr\u1EA3 l\u1EDDi c\u1EE7a b\u1EA1n.",
+    success_cheered: "Ch\xFAng ta l\xE0m \u0111\u01B0\u1EE3c r\u1ED3i!",
+    coffee_delighted: "C\xE0 ph\xEA gi\u1EA3i quy\u1EBFt m\u1ECDi th\u1EE9.",
+    reading_disturbed: "T\xF4i \u0111ang \u0111\u1ECDc s\xE1ch m\xE0.",
+    offline_worried: "B\u1EA1n c\xF2n \u1EDF \u0111\xF3 kh\xF4ng?"
+  },
+  ja: {
+    error_cry: "\u307C\u304F\u2026\u3084\u3089\u304B\u3057\u3061\u3083\u3063\u305F\u2026",
+    error_consoled: "\u3050\u3059\u2026\u3042\u308A\u304C\u3068\u3046\u3002",
+    error_sniffle: "\u307E\u3060\u3061\u3087\u3063\u3068\u60B2\u3057\u3044\u2026",
+    overwork_exhausted: "\u3064\u3001\u75B2\u308C\u305F\u2026",
+    overwork_cry: "\u3082\u3046\u2026\u7121\u7406\u304B\u3082\u2026",
+    work_angry: "\u3061\u3087\u3063\u3068\uFF01\u4F5C\u696D\u4E2D\u3060\u3088\uFF01",
+    sleep_bothered: "\u3093\u2026\u3042\u30685\u5206\u2026",
+    sleep_angry: "\u5BDD\u3066\u305F\u306E\u306B\uFF01",
+    typing_annoyed: "\u5165\u529B\u4E2D\u306B\u7A81\u3063\u3064\u304B\u306A\u3044\u3067\uFF01",
+    debugging_frustrated: "\u3053\u306E\u30D0\u30B0\u3001\u307C\u304F\u3092\u7B11\u3063\u3066\u308B\u2026",
+    idle_petted: "\u3048\u3078\u3078\u3001\u304F\u3059\u3050\u3063\u305F\u3044\u3002",
+    idle_shy: "\u3084\u3001\u3084\u3081\u3066\u2026",
+    thinking_startled: "\u308F\u3063\uFF01\u8003\u3048\u3066\u305F\u306E\u306B\uFF01",
+    waiting_pleading: "\u304A\u9858\u3044\u2026\u8FD4\u4E8B\u304C\u307B\u3057\u3044\u306A\u3002",
+    success_cheered: "\u3084\u3063\u305F\u306D\uFF01",
+    coffee_delighted: "\u30B3\u30FC\u30D2\u30FC\u306F\u6B63\u7FA9\u3002",
+    reading_disturbed: "\u8AAD\u66F8\u4E2D\u306A\u3093\u3060\u3051\u3069\u306A\u3002",
+    offline_worried: "\u307E\u3060\u3044\u308B\u2026\uFF1F"
+  },
+  ko: {
+    error_cry: "\uC800\u2026 \uC2E4\uC218\uD588\uC5B4\uC694\u2026",
+    error_consoled: "\uD751\u2026 \uACE0\uB9C8\uC6CC\uC694.",
+    error_sniffle: "\uC544\uC9C1 \uC870\uAE08 \uC2AC\uD37C\uC694\u2026",
+    overwork_exhausted: "\uB108\uBB34\u2026 \uD53C\uACE4\uD574\uC694\u2026",
+    overwork_cry: "\uB354\uB294\u2026 \uBABB \uD558\uACA0\uC5B4\uC694\u2026",
+    work_angry: "\uC57C! \uB098 \uC77C\uD558\uB294 \uC911\uC774\uC57C!",
+    sleep_bothered: "\uC74C\u2026 5\uBD84\uB9CC \uB354\u2026",
+    sleep_angry: "\uC790\uACE0 \uC788\uC5C8\uB294\uB370!",
+    typing_annoyed: "\uC785\uB825 \uC911\uC5D0 \uCC0C\uB974\uC9C0 \uB9C8!",
+    debugging_frustrated: "\uC774 \uBC84\uADF8\uAC00 \uB098\uB97C \uB180\uB9AC\uB294 \uAC83 \uAC19\uC544.",
+    idle_petted: "\uD788\uD788, \uAC04\uC9C0\uB7EC\uC6CC.",
+    idle_shy: "\uADF8, \uADF8\uB9CC\u2026",
+    thinking_startled: "\uC557! \uC0DD\uAC01 \uC911\uC774\uC5C8\uB294\uB370!",
+    waiting_pleading: "\uC81C\uBC1C\u2026 \uB300\uB2F5\uC774 \uD544\uC694\uD574\uC694.",
+    success_cheered: "\uD574\uB0C8\uC5B4\uC694!",
+    coffee_delighted: "\uCEE4\uD53C\uAC00 \uB2F5\uC774\uC5D0\uC694.",
+    reading_disturbed: "\uB098 \uCC45 \uC77D\uB294 \uC911\uC774\uC57C.",
+    offline_worried: "\uC544\uC9C1 \uAC70\uAE30 \uC788\uC5B4\uC694?"
   }
 };
 
@@ -715,6 +843,59 @@ function usePrefs() {
   return value;
 }
 
+// src/client/reactions.ts
+var REACTION_MS = 2640;
+var DOUBLE_CLICK_MS = 240;
+var REACTION_COOLDOWN_MS = 160;
+var OVERWORK_MS = 6e5;
+function persistentReaction(context) {
+  if (context.error) return context.comforted ? "error_sniffle" : "error_cry";
+  if (context.overwork) return "overwork_exhausted";
+  return null;
+}
+function singleReaction(context) {
+  if (context.error) return "error_consoled";
+  if (context.overwork) return "overwork_cry";
+  switch (context.scene) {
+    case "idle":
+      return "idle_petted";
+    case "thinking":
+      return "thinking_startled";
+    case "waiting":
+      return "waiting_pleading";
+    case "success":
+      return "success_cheered";
+    case "coffee":
+      return "coffee_delighted";
+    case "offline":
+      return "offline_worried";
+    case "sleeping":
+      return "sleep_bothered";
+    default:
+      return null;
+  }
+}
+function doubleReaction(context) {
+  if (context.error) return "error_sniffle";
+  if (context.overwork) return "work_angry";
+  switch (context.scene) {
+    case "sleeping":
+      return "sleep_angry";
+    case "working":
+      return "work_angry";
+    case "typing":
+      return "typing_annoyed";
+    case "debugging":
+      return "debugging_frustrated";
+    case "reading":
+      return "reading_disturbed";
+    case "idle":
+      return "idle_shy";
+    default:
+      return null;
+  }
+}
+
 // src/client/Pet.tsx
 var PET_W = 152;
 var PET_H = 98;
@@ -803,6 +984,8 @@ function CompanionInner({ useSessionStatus }) {
   const [hovering, setHovering] = (0, import_react4.useState)(false);
   const [completionDismissed, setCompletionDismissed] = (0, import_react4.useState)(false);
   const [detailOpen, setDetailOpen] = (0, import_react4.useState)(false);
+  const [transientReaction, setTransientReaction] = (0, import_react4.useState)(null);
+  const [comforted, setComforted] = (0, import_react4.useState)(false);
   const [wakeAt, setWakeAt] = (0, import_react4.useState)(0);
   const [draftMessage, setDraftMessage] = (0, import_react4.useState)("");
   const messageRef = (0, import_react4.useRef)(null);
@@ -810,6 +993,10 @@ function CompanionInner({ useSessionStatus }) {
   const dismissTimer = (0, import_react4.useRef)(void 0);
   const reportRef = (0, import_react4.useRef)(null);
   const detailRef = (0, import_react4.useRef)(null);
+  const reactionTimer = (0, import_react4.useRef)(void 0);
+  const clickTimer = (0, import_react4.useRef)(void 0);
+  const lastClickAt = (0, import_react4.useRef)(0);
+  const lastReactionAt = (0, import_react4.useRef)(0);
   const panelRef = (0, import_react4.useRef)(null);
   const gearRef = (0, import_react4.useRef)(null);
   const dragRef = (0, import_react4.useRef)(null);
@@ -856,6 +1043,8 @@ function CompanionInner({ useSessionStatus }) {
     () => () => {
       if (hoverTimer.current !== void 0) clearTimeout(hoverTimer.current);
       if (dismissTimer.current !== void 0) clearTimeout(dismissTimer.current);
+      if (reactionTimer.current !== void 0) clearTimeout(reactionTimer.current);
+      if (clickTimer.current !== void 0) clearTimeout(clickTimer.current);
     },
     []
   );
@@ -915,13 +1104,24 @@ function CompanionInner({ useSessionStatus }) {
     if (!completionActive) setDetailOpen(false);
   }, [completionActive]);
   const scene = manualScene ?? (completionActive ? "success" : autoScene);
-  const assets = COMPANION_ASSETS[prefs.character][scene];
-  const roaming = COMPANION_ASSETS[prefs.character]?.roaming;
-  const moving = dragging && roaming !== void 0;
-  const shown = moving ? roaming : assets;
+  const runningMs = facts2.running ? Math.max(0, now - facts2.runningAt) : 0;
+  const overwork = facts2.running && runningMs >= OVERWORK_MS && (scene === "working" || scene === "tired" || scene === "coffee");
+  const reactionContext = {
+    scene,
+    error: scene === "error",
+    overwork,
+    comforted
+  };
+  const persistent = persistentReaction(reactionContext);
+  const activeReaction = dragging ? null : transientReaction ?? persistent;
+  const table = COMPANION_ASSETS;
+  const roaming = table[prefs.character]?.roaming;
+  const reactionAssets = activeReaction === null ? void 0 : table[prefs.character]?.[activeReaction];
+  const baseAssets = table[prefs.character]?.[scene];
+  const shown = dragging && roaming !== void 0 ? roaming : reactionAssets ?? baseAssets ?? table[prefs.character]?.idle;
   const reduced = typeof globalThis.matchMedia === "function" && globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const src = assetUrl(prefs.animation && !reduced ? shown.webp : shown.png);
-  const caption = SCENE_LABELS[scene][prefs.language];
+  const caption = activeReaction === null ? SCENE_LABELS[scene][prefs.language] : REACTION_LINES[prefs.language][activeReaction];
   const characterName = prefs.character === "girl" ? "Lumi" : "Deepy";
   const desktopStatus = useDesktopBridge(prefs.desktop, {
     scene,
@@ -930,8 +1130,72 @@ function CompanionInner({ useSessionStatus }) {
     animation: prefs.animation
   });
   const desktopLabel = !prefs.desktop ? copy.desktopOff : desktopStatus === "connected" ? copy.desktopConnected : copy.desktopAbsent;
+  const reactionContextRef = (0, import_react4.useRef)(reactionContext);
+  reactionContextRef.current = reactionContext;
+  const clearTransientReaction = (0, import_react4.useCallback)(() => {
+    if (reactionTimer.current !== void 0) {
+      clearTimeout(reactionTimer.current);
+      reactionTimer.current = void 0;
+    }
+    setTransientReaction(null);
+  }, []);
+  const playReaction = (0, import_react4.useCallback)((id) => {
+    const timestamp = Date.now();
+    if (timestamp - lastReactionAt.current < REACTION_COOLDOWN_MS) return;
+    lastReactionAt.current = timestamp;
+    if (reactionTimer.current !== void 0) clearTimeout(reactionTimer.current);
+    setTransientReaction(id);
+    reactionTimer.current = setTimeout(() => {
+      reactionTimer.current = void 0;
+      setTransientReaction(null);
+    }, REACTION_MS);
+  }, []);
+  const reactOnce = (0, import_react4.useCallback)(() => {
+    const context = reactionContextRef.current;
+    if (context.error) setComforted(true);
+    const id = singleReaction(context);
+    if (id !== null) playReaction(id);
+  }, [playReaction]);
+  const reactDouble = (0, import_react4.useCallback)(() => {
+    const context = reactionContextRef.current;
+    if (context.error) setComforted(true);
+    const id = doubleReaction(context);
+    if (id !== null) playReaction(id);
+  }, [playReaction]);
+  const cancelPendingClick = (0, import_react4.useCallback)(() => {
+    if (clickTimer.current !== void 0) {
+      clearTimeout(clickTimer.current);
+      clickTimer.current = void 0;
+    }
+  }, []);
+  const registerClick = (0, import_react4.useCallback)(() => {
+    const timestamp = Date.now();
+    cancelPendingClick();
+    if (lastClickAt.current !== 0 && timestamp - lastClickAt.current <= DOUBLE_CLICK_MS) {
+      lastClickAt.current = 0;
+      reactDouble();
+      return;
+    }
+    lastClickAt.current = timestamp;
+    clickTimer.current = setTimeout(() => {
+      clickTimer.current = void 0;
+      lastClickAt.current = 0;
+      reactOnce();
+    }, DOUBLE_CLICK_MS);
+  }, [cancelPendingClick, reactDouble, reactOnce]);
+  (0, import_react4.useEffect)(() => {
+    clearTransientReaction();
+    cancelPendingClick();
+    setComforted(false);
+    lastClickAt.current = 0;
+  }, [facts2.sessionId, facts2.runningAt, clearTransientReaction, cancelPendingClick]);
+  (0, import_react4.useEffect)(() => {
+    clearTransientReaction();
+    setComforted(false);
+  }, [facts2.promptError, facts2.lastAgentError, facts2.openState, facts2.stopAt, clearTransientReaction]);
   const startDrag = (event, toggle) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    cancelPendingClick();
     setWakeAt(Date.now());
     dragRef.current = { dx: event.clientX - spot.x, dy: event.clientY - spot.y, moved: false, toggle, current: spot };
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -960,14 +1224,28 @@ function CompanionInner({ useSessionStatus }) {
     if (drag === null) return;
     if (drag.moved) {
       save({ position: drag.current });
+      lastClickAt.current = 0;
       return;
     }
-    if (drag.toggle) setOpen((value) => !value);
+    if (drag.toggle) registerClick();
+  };
+  const cancelDrag = (event) => {
+    dragRef.current = null;
+    setDragging(false);
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    } catch {
+    }
   };
   const onKeyDown = (event) => {
+    if (event.key === "F10" && event.shiftKey || event.key === "ContextMenu" || event.key === "Apps") {
+      event.preventDefault();
+      setOpen(true);
+      return;
+    }
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      setOpen((value) => !value);
+      reactOnce();
     }
   };
   const cancelHoverHide = (0, import_react4.useCallback)(() => {
@@ -1059,12 +1337,17 @@ function CompanionInner({ useSessionStatus }) {
       draggable: false,
       role: "button",
       tabIndex: 0,
-      "aria-label": copy.settingsAria,
-      "aria-expanded": open,
+      "aria-label": copy.reactAria,
       onPointerDown: (event) => startDrag(event, true),
       onPointerMove: moveDrag,
       onPointerUp: endDrag,
-      onPointerCancel: endDrag,
+      onPointerCancel: cancelDrag,
+      onContextMenu: (event) => {
+        event.preventDefault();
+        cancelPendingClick();
+        setWakeAt(Date.now());
+        setOpen(true);
+      },
       onPointerEnter: onEnterPet,
       onPointerLeave: onLeavePet,
       onKeyDown
@@ -1077,6 +1360,7 @@ function CompanionInner({ useSessionStatus }) {
       ref: gearRef,
       "aria-label": copy.settingsAria,
       "aria-expanded": open,
+      onPointerDown: cancelPendingClick,
       onClick: () => setOpen((value) => !value)
     },
     "\u2699"

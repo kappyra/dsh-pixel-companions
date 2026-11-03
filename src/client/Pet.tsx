@@ -26,7 +26,17 @@ import { LIVE_TOOL, MAX_SCALE, MIN_SCALE, SIZE_PRESETS, SCALE_STEP, clampScale, 
 import { useDesktopBridge, type DesktopStatus } from './desktop.ts'
 import { deriveScene, type Character, type Scene } from './state.ts'
 import { updatePrefs, updatePrefsSoon, usePrefs, type Position, type Preferences } from './prefs.ts'
-import { LANGUAGES, SCENE_LABELS, UI_TEXT, type Language } from './text.ts'
+import {
+  DOUBLE_CLICK_MS,
+  OVERWORK_MS,
+  REACTION_COOLDOWN_MS,
+  REACTION_MS,
+  doubleReaction,
+  persistentReaction,
+  singleReaction,
+  type ReactionId,
+} from './reactions.ts'
+import { LANGUAGES, REACTION_LINES, SCENE_LABELS, UI_TEXT, type Language } from './text.ts'
 
 /** Layout box of the companion, in CSS pixels; the sprite scales inside it. */
 const PET_W = 152
@@ -146,6 +156,10 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
   /** The finished turn stays on screen until the user hovers the companion. */
   const [completionDismissed, setCompletionDismissed] = useState(false)
   const [detailOpen, setDetailOpen] = useState(false)
+  /** Temporary interaction reaction that overrides the scene for a moment. */
+  const [transientReaction, setTransientReaction] = useState<ReactionId | null>(null)
+  /** The user comforted the current error; the tear tracks stay until it clears. */
+  const [comforted, setComforted] = useState(false)
   /** Local user interaction wakes the companion even when the session did not change. */
   const [wakeAt, setWakeAt] = useState(0)
   const [draftMessage, setDraftMessage] = useState('')
@@ -154,6 +168,10 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
   const dismissTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const reportRef = useRef<HTMLDivElement | null>(null)
   const detailRef = useRef<HTMLElement | null>(null)
+  const reactionTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const clickTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const lastClickAt = useRef(0)
+  const lastReactionAt = useRef(0)
   const panelRef = useRef<HTMLDivElement | null>(null)
   const gearRef = useRef<HTMLButtonElement | null>(null)
   const dragRef = useRef<{ dx: number; dy: number; moved: boolean; toggle: boolean; current: Position } | null>(null)
@@ -208,11 +226,13 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
     }
   }, [detailOpen])
 
-  // Drop pending hover/dismiss timers when the companion unmounts.
+  // Drop pending hover/dismiss/click/reaction timers when the companion unmounts.
   useEffect(
     () => () => {
       if (hoverTimer.current !== undefined) clearTimeout(hoverTimer.current)
       if (dismissTimer.current !== undefined) clearTimeout(dismissTimer.current)
+      if (reactionTimer.current !== undefined) clearTimeout(reactionTimer.current)
+      if (clickTimer.current !== undefined) clearTimeout(clickTimer.current)
     },
     [],
   )
@@ -292,18 +312,34 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
   }, [completionActive])
 
   const scene = manualScene ?? (completionActive ? 'success' : autoScene)
-  const assets = COMPANION_ASSETS[prefs.character][scene]
+  const runningMs = facts.running ? Math.max(0, now - facts.runningAt) : 0
+  // Ten minutes of real agent work counts as overwork; idle time never does, and an
+  // approval prompt keeps priority over the exhausted look.
+  const overwork =
+    facts.running &&
+    runningMs >= OVERWORK_MS &&
+    (scene === 'working' || scene === 'tired' || scene === 'coffee')
+  const reactionContext = {
+    scene,
+    error: scene === 'error',
+    overwork,
+    comforted,
+  }
+  const persistent = persistentReaction(reactionContext)
+  const activeReaction = dragging ? null : (transientReaction ?? persistent)
+
+  const table = COMPANION_ASSETS as Record<string, Record<string, { webp: string; png: string } | undefined>>
   // `roaming` is an optional bonus animation of the character alone: fixed furniture
   // (desk, laptop, lamp, floor) must never travel with a moving companion.
-  const roaming = (COMPANION_ASSETS as Record<string, Record<string, { webp: string; png: string } | undefined>>)[
-    prefs.character
-  ]?.roaming
-  const moving = dragging && roaming !== undefined
-  const shown = moving ? roaming : assets
+  const roaming = table[prefs.character]?.roaming
+  const reactionAssets = activeReaction === null ? undefined : table[prefs.character]?.[activeReaction]
+  const baseAssets = table[prefs.character]?.[scene]
+  const shown = (dragging && roaming !== undefined ? roaming : (reactionAssets ?? baseAssets ?? table[prefs.character]?.idle))!
   const reduced =
     typeof globalThis.matchMedia === 'function' && globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches
   const src = assetUrl(prefs.animation && !reduced ? shown.webp : shown.png)
-  const caption = SCENE_LABELS[scene][prefs.language]
+  const caption =
+    activeReaction === null ? SCENE_LABELS[scene][prefs.language] : REACTION_LINES[prefs.language][activeReaction]
   const characterName = prefs.character === 'girl' ? 'Lumi' : 'Deepy'
   const desktopStatus = useDesktopBridge(prefs.desktop, {
     scene,
@@ -317,8 +353,88 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
       ? copy.desktopConnected
       : copy.desktopAbsent
 
+  const reactionContextRef = useRef(reactionContext)
+  reactionContextRef.current = reactionContext
+
+  const clearTransientReaction = useCallback(() => {
+    if (reactionTimer.current !== undefined) {
+      clearTimeout(reactionTimer.current)
+      reactionTimer.current = undefined
+    }
+    setTransientReaction(null)
+  }, [])
+
+  const playReaction = useCallback((id: ReactionId) => {
+    const timestamp = Date.now()
+    if (timestamp - lastReactionAt.current < REACTION_COOLDOWN_MS) return
+    lastReactionAt.current = timestamp
+    if (reactionTimer.current !== undefined) clearTimeout(reactionTimer.current)
+    setTransientReaction(id)
+    reactionTimer.current = setTimeout(() => {
+      reactionTimer.current = undefined
+      setTransientReaction(null)
+    }, REACTION_MS)
+  }, [])
+
+  /** One left-click: gentle, context-aware reaction. */
+  const reactOnce = useCallback(() => {
+    const context = reactionContextRef.current
+    if (context.error) setComforted(true)
+    const id = singleReaction(context)
+    if (id !== null) playReaction(id)
+  }, [playReaction])
+
+  /** Double left-click: the stronger "interrupted" reaction. */
+  const reactDouble = useCallback(() => {
+    const context = reactionContextRef.current
+    if (context.error) setComforted(true)
+    const id = doubleReaction(context)
+    if (id !== null) playReaction(id)
+  }, [playReaction])
+
+  const cancelPendingClick = useCallback(() => {
+    if (clickTimer.current !== undefined) {
+      clearTimeout(clickTimer.current)
+      clickTimer.current = undefined
+    }
+  }, [])
+
+  /** Defer a single click until the double-click window has passed. */
+  const registerClick = useCallback(() => {
+    const timestamp = Date.now()
+    cancelPendingClick()
+    if (lastClickAt.current !== 0 && timestamp - lastClickAt.current <= DOUBLE_CLICK_MS) {
+      lastClickAt.current = 0
+      reactDouble()
+      return
+    }
+    lastClickAt.current = timestamp
+    clickTimer.current = setTimeout(() => {
+      clickTimer.current = undefined
+      lastClickAt.current = 0
+      reactOnce()
+    }, DOUBLE_CLICK_MS)
+  }, [cancelPendingClick, reactDouble, reactOnce])
+
+  // A new session or a new run starts with a clean interaction state.
+  useEffect(() => {
+    clearTransientReaction()
+    cancelPendingClick()
+    setComforted(false)
+    lastClickAt.current = 0
+  }, [facts.sessionId, facts.runningAt, clearTransientReaction, cancelPendingClick])
+
+  // A new genuine error restarts the crying reaction; when it clears, comfort ends.
+  useEffect(() => {
+    clearTransientReaction()
+    setComforted(false)
+  }, [facts.promptError, facts.lastAgentError, facts.openState, facts.stopAt, clearTransientReaction])
+
   const startDrag = (event: ReactPointerEvent<HTMLElement>, toggle: boolean) => {
     if (event.pointerType === 'mouse' && event.button !== 0) return
+    // A new press invalidates a pending single click; the timestamp stays so a
+    // quick second click can still be recognised as a double click.
+    cancelPendingClick()
     setWakeAt(Date.now())
     dragRef.current = { dx: event.clientX - spot.x, dy: event.clientY - spot.y, moved: false, toggle, current: spot }
     event.currentTarget.setPointerCapture(event.pointerId)
@@ -350,16 +466,32 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
     if (drag === null) return
     if (drag.moved) {
       save({ position: drag.current })
+      lastClickAt.current = 0
       return
     }
-    // A press without travel is a click; only the companion itself toggles the panel.
-    if (drag.toggle) setOpen((value) => !value)
+    // A press without travel is a click, not a drag.
+    if (drag.toggle) registerClick()
+  }
+
+  const cancelDrag = (event: ReactPointerEvent<HTMLElement>) => {
+    dragRef.current = null
+    setDragging(false)
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    } catch {
+      // The pointer was already released.
+    }
   }
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if ((event.key === 'F10' && event.shiftKey) || event.key === 'ContextMenu' || event.key === 'Apps') {
+      event.preventDefault()
+      setOpen(true)
+      return
+    }
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      setOpen((value) => !value)
+      reactOnce()
     }
   }
 
@@ -471,12 +603,17 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
             draggable={false}
             role="button"
             tabIndex={0}
-            aria-label={copy.settingsAria}
-            aria-expanded={open}
+            aria-label={copy.reactAria}
             onPointerDown={(event) => startDrag(event, true)}
             onPointerMove={moveDrag}
             onPointerUp={endDrag}
-            onPointerCancel={endDrag}
+            onPointerCancel={cancelDrag}
+            onContextMenu={(event) => {
+              event.preventDefault()
+              cancelPendingClick()
+              setWakeAt(Date.now())
+              setOpen(true)
+            }}
             onPointerEnter={onEnterPet}
             onPointerLeave={onLeavePet}
             onKeyDown={onKeyDown}
@@ -487,6 +624,7 @@ function CompanionInner({ useSessionStatus }: { useSessionStatus: (selector: (sn
             ref={gearRef}
             aria-label={copy.settingsAria}
             aria-expanded={open}
+            onPointerDown={cancelPendingClick}
             onClick={() => setOpen((value) => !value)}
           >
             ⚙

@@ -1,7 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { SCENES } from '../src/client/state.ts'
-import { LANGUAGES, SCENE_LABELS, UI_TEXT, languageFromTag } from '../src/client/text.ts'
+import { LANGUAGES, REACTION_LINES, SCENE_LABELS, UI_TEXT, languageFromTag } from '../src/client/text.ts'
+import { REACTION_IDS } from '../src/client/reactions.ts'
 
 test('every scene has a non-empty caption in every language', () => {
   assert.equal(SCENES.length, 15)
@@ -43,4 +44,17 @@ test('languageFromTag maps browser tags, unknown values fall back to English', (
   assert.equal(languageFromTag('de-DE'), 'en')
   assert.equal(languageFromTag(undefined), 'en')
   assert.equal(languageFromTag(''), 'en')
+})
+
+test('every interaction has a short, distinct line in every language', () => {
+  for (const language of LANGUAGES) {
+    const lines = REACTION_IDS.map((reaction) => REACTION_LINES[language.id][reaction])
+    for (const [index, reaction] of REACTION_IDS.entries()) {
+      const line = lines[index]
+      assert.equal(typeof line, 'string', `${language.id}/${reaction}`)
+      assert.ok(line.trim().length > 0, `${language.id}/${reaction} is empty`)
+      assert.ok(line.length <= 80, `${language.id}/${reaction} is too long`)
+    }
+    assert.equal(new Set(lines).size, lines.length, `${language.id} repeats a line`)
+  }
 })

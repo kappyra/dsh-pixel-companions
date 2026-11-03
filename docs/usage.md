@@ -21,14 +21,33 @@ show the gear button (⚙) and, when a conversation is open, the message box.
 ## Move it
 
 Drag the sprite itself with the left mouse button, a finger, or a pen. A press that moves
-less than a few pixels is treated as a click and opens the settings panel instead of
-moving the companion, so small hand movements do not lose your position.
+less than a few pixels is a click, not a drag: one click reacts to the current scene, a
+quick second click gets the stronger reaction, and a right-click opens the settings panel
+(the gear button and Shift+F10 do the same).
 
 The position is kept inside the window, re-checked when the window resizes or the
 companion changes size, and saved in this browser's `localStorage` under
 `kappy.pixel-companions.ui.v1`; a page reload restores it. If the companion ends up
 somewhere awkward, open the gear panel and choose **Reset position** to return it to the
 automatic bottom-right spot.
+
+## Interactions
+
+The companion reacts to your attention, but a reaction never changes the session, the
+error signal, or the completion report.
+
+- One left-click: a gentle, context-aware reaction — petting, a startled look, a pleading
+  face while it waits, a cheer when the turn is done, and so on.
+- Double left-click: the stronger reaction — annoyed while typing or working, disturbed
+  while reading or debugging, shy when idle, angry when woken from sleep.
+- Right-click: opens the settings panel; the gear button and Shift+F10 do the same.
+- Error: the companion cries. One click comforts it into a cute teary expression, and the
+  tear tracks stay until the error clears.
+- Ten minutes of real agent work: it looks exhausted; clicking gives an emotional
+  reaction, double-clicking gets an angry one.
+- Reactions are temporary and return to the agent's scene. With reduced motion or motion
+  off they use still PNG frames, and the dialogue under the sprite is localized in all six
+  languages.
 
 ## Send a quick message
 
