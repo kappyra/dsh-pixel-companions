@@ -27,12 +27,13 @@ What was actually checked for the installable bundle:
 - The Client module loads through the module loader, and the live GUI lists both entries
   active: `shell.overlay` → `kappy-pixel-companions` (order 50) and
   `conversation.input.dock` → `kappy-pixel-companions.bridge` (order 80).
-- `node tools/build-client.mjs` reproduces the committed `client.js` (about 72 KiB), and
-  `npm test` runs 20 tests — 8 scene rules, 8 pure-helper tests (including `clampScale`
-  range handling) and 4 translation-completeness tests — all passing.
+- `node tools/build-client.mjs` reproduces the committed `client.js` (about 94 KiB), and
+  `npm test` runs 28 tests — 8 scene rules, 8 pure-helper tests (including `clampScale`
+  range handling), 5 translation-completeness tests and a 7-test reaction-mapping suite —
+  all passing.
 - The Harness asset route serves the generated sprite references
   (`plugins/dsh-pixel-companions/assets/<character>/<scene>.<webp|png>?v=<sha1-8>`) as
-  `200 image/webp` / `image/png`; `src/client/assets.generated.ts` is about 5 KiB.
+  `200 image/webp` / `image/png`; `src/client/assets.generated.ts` is about 11 KiB.
 - Performance/logic checks: `publishFacts` shallow-diffs and skips unchanged snapshots;
   typing refreshes the idle timer at most once every 5 s and never changes the scene; the 1 s clock and the desktop
   probe/heartbeat pause while the tab is hidden and resume on visibility; the answer
@@ -56,7 +57,7 @@ What was actually checked for the installable bundle:
   opens the bounded plain-text panel, hovering the companion dismisses the report after the
   320 ms dwell, a new turn re-opens it, and the hover message box sends a message and
   restores the previous draft.
-- The v3 artwork was checked headlessly: all 62 sprite files decode at 192×128 RGBA with
+- The artwork was checked headlessly: all 134 sprite files decode at 192×128 RGBA with
   transparency, every animated WebP has at least two frames, and a headless drag test
   shows Deepy switching to `roaming` while dragged and returning to the scene on release
   (Whale Girl is unchanged).
@@ -191,8 +192,9 @@ covered by `tests/text.test.ts`.
     state from the page over a loopback-only HTTP bridge (`src/client/desktop.ts`). It is
     off by default, carries no prompt/draft/message/session data, and requires no new
     Harness API.
-11. **v3 artwork and roaming movement visual.** `assets/` now holds the 30 girl + 30 whale
-    sprites (15 scenes each) plus the optional `assets/whale/roaming.{webp,png}` pair.
+11. **Artwork, reactions and roaming movement visual.** `assets/` now holds the 30 girl + 30
+    whale scene sprites (15 scenes each), 18 reaction animations per character, plus the
+    optional `assets/whale/roaming.{webp,png}` pair.
     While Deepy is dragged — in the overlay or the desktop window — the desk-free
     `roaming` animation replaces the scene so fixed furniture does not travel, and the
     scene returns on release. `roaming` is not a scene: the 15-state machine,
@@ -213,7 +215,7 @@ covered by `tests/text.test.ts`.
 13. **Asset-route delivery and performance pass.** Sprites are no longer embedded: the
     manifest holds `plugins/dsh-pixel-companions/assets/...?v=<sha1-8>` references served
     by the Harness asset route, resolved through `require.asset` with a raw fallback. The
-    committed `client.js` drops from about 3.3 MB to about 72 KiB; sprites are fetched per
+    committed `client.js` drops from about 3.3 MB to about 94 KiB; sprites are fetched per
     scene and cached immutably, with the content hash busting the cache. The bridge
     shallow-diffs its facts, the 1 s clock and desktop probe/heartbeat pause in hidden
     tabs, the answer preview is published once at stop, user activity refreshes the idle timer without changing the scene (typing is throttled to once every 5 s), and the report pill is announced with
@@ -237,8 +239,9 @@ covered by `tests/text.test.ts`.
 
 ## Known limits
 
-- The committed JS bundle is about 72 KiB. The 62 sprite files (30 girl + 32 whale,
-  including the optional roaming pair) are served separately by the plugin asset route and
+- The committed JS bundle is about 94 KiB. The 134 sprite files (66 girl + 68 whale:
+  15 scenes and 18 reactions each, including the optional roaming pair) are served
+  separately by the plugin asset route and
   cached immutably; `?v=<sha1-8>` busts the cache when a file changes. This keeps boot cheap
   but means the `assets/` tree must ship with the package.
 - The scene mapping cannot distinguish "finished" from "stopped/cancelled": the client

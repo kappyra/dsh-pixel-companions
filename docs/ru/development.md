@@ -8,7 +8,7 @@
 package.json              bundle manifest: dsh.bundle.patch + dsh.client
 cordis.patch.yml          inserts the ui-pixel-companions row
 index.js                  Host half (empty apply; the Client module does the work)
-client.js                 generated browser bundle (committed, ~72 KiB)
+client.js                 generated browser bundle (committed, ~94 KiB)
 icon.svg                  plugin inventory icon
 locale/*.json             meta.title / meta.description, six languages
 src/client/index.ts       registers the slot entries (overlay, bridge, Settings row)
@@ -22,9 +22,9 @@ src/client/asset-url.ts   resolves asset-route references through require.asset
 src/client/state.ts       SCENES + deriveScene + observed-fact types
 src/client/text.ts        LANGUAGES, SCENE_LABELS, UI_TEXT, languageFromTag
 src/client/desktop.ts     optional localhost bridge to the desktop window
-src/client/assets.generated.ts  generated asset-route refs (committed, ~5 KiB)
-assets/girl/*.webp|png    canonical art (pack v2 style, 15 scenes)
-assets/whale/*.webp|png   canonical v3 matte art (15 scenes)
+src/client/assets.generated.ts  generated asset-route refs (committed, ~11 KiB)
+assets/girl/*.webp|png    canonical art (pack v2 style, 15 scenes + 18 reactions)
+assets/whale/*.webp|png   canonical v3 matte art (15 scenes + 18 reactions)
 assets/whale/roaming.*    optional desk-free movement asset for Deepy
 source-art/*.gif          pre-v3 sources for tools/build_assets.py (do not rerun)
 tools/build-assets.mjs    assets/ -> content-hashed refs in assets.generated.ts

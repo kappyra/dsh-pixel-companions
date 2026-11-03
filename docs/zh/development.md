@@ -8,7 +8,7 @@
 package.json              bundle manifest: dsh.bundle.patch + dsh.client
 cordis.patch.yml          inserts the ui-pixel-companions row
 index.js                  Host half (empty apply; the Client module does the work)
-client.js                 generated browser bundle (committed, ~72 KiB)
+client.js                 generated browser bundle (committed, ~94 KiB)
 icon.svg                  plugin inventory icon
 locale/*.json             meta.title / meta.description, six languages
 src/client/index.ts       registers the slot entries (overlay, bridge, Settings row)
@@ -22,9 +22,9 @@ src/client/asset-url.ts   resolves asset-route references through require.asset
 src/client/state.ts       SCENES + deriveScene + observed-fact types
 src/client/text.ts        LANGUAGES, SCENE_LABELS, UI_TEXT, languageFromTag
 src/client/desktop.ts     optional localhost bridge to the desktop window
-src/client/assets.generated.ts  generated asset-route refs (committed, ~5 KiB)
-assets/girl/*.webp|png    canonical art (pack v2 style, 15 scenes)
-assets/whale/*.webp|png   canonical v3 matte art (15 scenes)
+src/client/assets.generated.ts  generated asset-route refs (committed, ~11 KiB)
+assets/girl/*.webp|png    canonical art (pack v2 style, 15 scenes + 18 reactions)
+assets/whale/*.webp|png   canonical v3 matte art (15 scenes + 18 reactions)
 assets/whale/roaming.*    optional desk-free movement asset for Deepy
 source-art/*.gif          pre-v3 sources for tools/build_assets.py (do not rerun)
 tools/build-assets.mjs    assets/ -> content-hashed refs in assets.generated.ts
@@ -55,13 +55,13 @@ python3 desktop/companion.py --self-test     # headless desktop acceptance test
 `npm run build` 分两步，每一步也可以单独运行：
 
 - `node tools/build-assets.mjs` 扫描 `assets/` 并重写 `src/client/assets.generated.ts`
-  （约 5 KiB），写入形如
+  （约 11 KiB），写入形如
   `plugins/dsh-pixel-companions/assets/<character>/<scene>.<webp|png>?v=<sha1-8>` 的插件
   素材路由引用。查询串是文件 SHA-1 的前 8 个十六进制字符，因此改变的精灵会得到新 URL。
   如果某个角色/场景缺少 `.webp` 或 `.png`，它会失败。
 - `node tools/build-client.mjs` 用 esbuild 打包 TypeScript，保持 `react` external，
   把输出包装进 `window.__ModuleLoader__.load({ id: "dsh-pixel-companions", factory })`，
-  并写入 `client.js`（约 72 KiB）。esbuild 的 `--check`（`node --check`）解析是构建的
+  并写入 `client.js`（约 94 KiB）。esbuild 的 `--check`（`node --check`）解析是构建的
   一部分。
 
 `npm run assets` 只运行第一步；当你只需要刷新引用时使用它。
@@ -92,12 +92,12 @@ Harness 素材路由会从包自身提供美术资源：
 - `src/client/assets.generated.ts` 保存这些引用，而不是图像字节。
 - `src/client/asset-url.ts` 在加载器提供 `require.asset(...)` 辅助函数时用它解析引用，
   否则回退到原始的文档相对引用。
-- 浏览器按需为当前角色/场景获取精灵（场景变化时也获取另一个），而不是在启动时解析 62 张
+- 浏览器按需为当前角色/场景获取精灵（场景变化时也获取另一个），而不是在启动时解析 134 张
   内嵌图片。
 - 每个 URL 对其内容哈希而言是不可变的，因此浏览器可以长期缓存；当文件变化时，
   `?v=<sha1-8>` 查询串会使该缓存失效。
 
-已提交的 JS bundle 保持在约 72 KiB；美术资源作为普通文件放在 `assets/` 下。素材变化后
+已提交的 JS bundle 保持在约 94 KiB；美术资源作为普通文件放在 `assets/` 下。素材变化后
 运行 `npm run build` 才会更新清单和 bundle。
 
 ## 槽位条目如何工作
@@ -162,8 +162,9 @@ bridge 对事实做浅比较，只在字段变化时发布；输入等用户活�
 
 ## 编辑素材
 
-`assets/` 是规范的，目前包含 v3 素材更新：每个角色 15 个场景精灵（动画 WebP + 静止 PNG，
-192×128 RGBA、透明），外加 Deepy 可选的 `assets/whale/roaming.{webp,png}` 移动视觉。只通过
+`assets/` 是规范的，目前包含 v3 素材更新和 v4 反应：每个角色 15 个场景精灵和 18 个反应
+动画（动画 WebP + 静止 PNG，192×128 RGBA、透明），外加 Deepy 可选的
+`assets/whale/roaming.{webp,png}` 移动视觉。只通过
 正常构建来重新生成清单和 bundle：
 
 1. 替换或添加 `assets/<character>/<scene>.webp`（动画）和
@@ -174,7 +175,7 @@ bridge 对事实做浅比较，只在字段变化时发布；输入等用户活�
 
 不要手工编辑 `src/client/assets.generated.ts` 或 `client.js`；它们由构建生成。
 
-由于精灵由素材路由提供而不是内嵌，已提交的 `client.js` 保持在约 72 KiB；图像按场景从包中
+由于精灵由素材路由提供而不是内嵌，已提交的 `client.js` 保持在约 94 KiB；图像按场景从包中
 获取并不可变缓存。`?v=<sha1-8>` 哈希会随文件内容变化，因此浏览器无需重命名就能获得新
 素材。
 
@@ -190,10 +191,12 @@ pre-v3** 素材生成流程。v3 更新后 `assets/` 是规范的，运行那个
 - `tests/signals.test.ts` —— 8 个针对 `liveBits`、`streamOf`、`cleanReport`、
   `lastResponse`、`lastAssistantNode`、`assistantText`、`MAX_DETAIL` 上限和
   `clampScale` 范围处理的测试。
-- `tests/text.test.ts` —— 4 个测试：每个场景在六种语言中都有字幕、每个 UI 字符串在六种
-  语言中都存在、每个场景的字幕互不相同，以及 `languageFromTag` 的映射/回退。
+- `tests/text.test.ts` —— 5 个测试：每个场景在六种语言中都有字幕、每个 UI 字符串在六种
+  语言中都存在、每条互动台词在六种语言中都存在、每个场景的字幕互不相同，以及
+  `languageFromTag` 的映射/回退。
+- 反应映射套件 —— 7 个测试，覆盖单击/双击映射、持久状态以及两个角色各自的精灵对。
 
-合计 20 个测试。桌面半边保留自己的无头 `--self-test`（92 个动画解码，覆盖 0.5、1.0 和
+合计 28 个测试。桌面半边保留自己的无头 `--self-test`（92 个动画解码，覆盖 0.5、1.0 和
 2.0 缩放，31 个静止解码、260 项检查）。
 
 ## 打包
@@ -210,7 +213,7 @@ npm pack               # dsh-pixel-companions-0.1.0.tgz
 
 ## 发布检查清单
 
-1. `npm run build` 和 `npm test`（20 个测试）。
+1. `npm run build` 和 `npm test`（28 个测试）。
 2. `python3 -m py_compile desktop/companion.py` 和
    `python3 desktop/companion.py --self-test`。
 3. `npm pack --dry-run`：确认存在 `client.js`、`assets/**`、`locale/*.json`（六种

@@ -8,7 +8,7 @@ English | [中文](zh/development.md) | [Русский](ru/development.md) | [T
 package.json              bundle manifest: dsh.bundle.patch + dsh.client
 cordis.patch.yml          inserts the ui-pixel-companions row
 index.js                  Host half (empty apply; the Client module does the work)
-client.js                 generated browser bundle (committed, ~72 KiB)
+client.js                 generated browser bundle (committed, ~94 KiB)
 icon.svg                  plugin inventory icon
 locale/*.json             meta.title / meta.description, six languages
 src/client/index.ts       registers the slot entries (overlay, bridge, Settings row)
@@ -22,9 +22,9 @@ src/client/asset-url.ts   resolves asset-route references through require.asset
 src/client/state.ts       SCENES + deriveScene + observed-fact types
 src/client/text.ts        LANGUAGES, SCENE_LABELS, UI_TEXT, languageFromTag
 src/client/desktop.ts     optional localhost bridge to the desktop window
-src/client/assets.generated.ts  generated asset-route refs (committed, ~5 KiB)
-assets/girl/*.webp|png    canonical art (pack v2 style, 15 scenes)
-assets/whale/*.webp|png   canonical v3 matte art (15 scenes)
+src/client/assets.generated.ts  generated asset-route refs (committed, ~11 KiB)
+assets/girl/*.webp|png    canonical art (pack v2 style, 15 scenes + 18 reactions)
+assets/whale/*.webp|png   canonical v3 matte art (15 scenes + 18 reactions)
 assets/whale/roaming.*    optional desk-free movement asset for Deepy
 source-art/*.gif          pre-v3 sources for tools/build_assets.py (do not rerun)
 tools/build-assets.mjs    assets/ -> content-hashed refs in assets.generated.ts
@@ -55,14 +55,14 @@ python3 desktop/companion.py --self-test     # headless desktop acceptance test
 `npm run build` is two steps, and each runs alone:
 
 - `node tools/build-assets.mjs` scans `assets/` and rewrites
-  `src/client/assets.generated.ts` (about 5 KiB) with plugin asset-route references of the
+  `src/client/assets.generated.ts` (about 11 KiB) with plugin asset-route references of the
   form `plugins/dsh-pixel-companions/assets/<character>/<scene>.<webp|png>?v=<sha1-8>`.
   The query is the first 8 hex characters of the file's SHA-1, so a changed sprite gets a
   new URL. It fails if a character/scene lacks either a `.webp` or a `.png`.
 - `node tools/build-client.mjs` bundles the TypeScript with esbuild, keeps `react`
   external, wraps the output in
   `window.__ModuleLoader__.load({ id: "dsh-pixel-companions", factory })`, and writes
-  `client.js` (about 72 KiB). esbuild's `--check` (`node --check`) parse is part of the
+  `client.js` (about 94 KiB). esbuild's `--check` (`node --check`) parse is part of the
   build.
 
 `npm run assets` is the first step alone; use it when you only need refreshed references.
@@ -95,11 +95,11 @@ so the Harness asset route serves the package's own artwork at
 - `src/client/asset-url.ts` resolves one reference through the loader's `require.asset(...)`
   helper when it exists, and falls back to the raw document-relative reference otherwise.
 - The browser fetches a sprite on demand for the current character/scene (and for the other
-  scene when it changes), instead of parsing 62 embedded images at boot.
+  scene when it changes), instead of parsing 134 embedded images at boot.
 - Each URL is immutable for its content hash, so the browser can cache it long-term; the
   `?v=<sha1-8>` query busts that cache whenever the file changes.
 
-The committed JS bundle stays about 72 KiB; the artwork ships as ordinary files under
+The committed JS bundle stays about 94 KiB; the artwork ships as ordinary files under
 `assets/`. Running `npm run build` after an artwork change is what updates the manifest and
 the bundle.
 
@@ -175,9 +175,10 @@ sets `position` back to `null`.
 
 ## Editing artwork
 
-`assets/` is canonical and currently holds the v3 artwork update: 15 scene sprites per
-character (animated WebP + still PNG, 192×128 RGBA with transparency) plus the optional
-`assets/whale/roaming.{webp,png}` movement visual for Deepy. Regenerate the manifest and
+`assets/` is canonical and currently holds the v3 artwork update plus the v4 reactions: 15
+scene sprites and 18 reaction animations per character (animated WebP + still PNG,
+192×128 RGBA with transparency) plus the optional `assets/whale/roaming.{webp,png}`
+movement visual for Deepy. Regenerate the manifest and
 bundle only through the normal build:
 
 1. Replace or add `assets/<character>/<scene>.webp` (animated) and
@@ -189,7 +190,7 @@ bundle only through the normal build:
 Do not hand-edit `src/client/assets.generated.ts` or `client.js`; the build owns them.
 
 Because sprites are served by the asset route rather than embedded, the committed
-`client.js` stays about 72 KiB; the images are fetched per scene from the package and cached
+`client.js` stays about 94 KiB; the images are fetched per scene from the package and cached
 immutably. The `?v=<sha1-8>` hash changes with the file content, so browsers pick up new
 artwork without a rename.
 
@@ -206,11 +207,13 @@ normal changes go through `npm run build` only.
 - `tests/signals.test.ts` — 8 tests for `liveBits`, `streamOf`, `cleanReport`,
   `lastResponse`, `lastAssistantNode`, `assistantText`, the `MAX_DETAIL` bound and
   `clampScale` range handling.
-- `tests/text.test.ts` — 4 tests: every scene captioned in all six languages, every UI
-  string present in all six languages, captions distinct per scene, and `languageFromTag`
-  mapping/fallback.
+- `tests/text.test.ts` — 5 tests: every scene captioned in all six languages, every UI
+  string present in all six languages, every interaction line present in all six
+  languages, captions distinct per scene, and `languageFromTag` mapping/fallback.
+- a reaction-mapping suite — 7 tests for the single/double-click map, persistent states
+  and the sprite pairs shipped for both characters.
 
-That is 20 tests in total. The desktop half keeps its own headless `--self-test` (92
+That is 28 tests in total. The desktop half keeps its own headless `--self-test` (92
 animated decodes at 0.5, 1.0 and 2.0 scale, 31 still decodes, 260 checks).
 
 ## Packaging
@@ -228,7 +231,7 @@ with `dsh plugin --profile web add <tgz>`.
 
 ## Release checklist
 
-1. `npm run build` and `npm test` (20 tests).
+1. `npm run build` and `npm test` (28 tests).
 2. `python3 -m py_compile desktop/companion.py` and
    `python3 desktop/companion.py --self-test`.
 3. `npm pack --dry-run`: `client.js`, `assets/**`, `locale/*.json` (six languages),

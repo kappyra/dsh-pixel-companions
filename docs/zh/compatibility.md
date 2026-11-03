@@ -26,12 +26,12 @@ tsdown/tsc 构建。这个仓库是**可安装形态**，已在运行中的 Harn
 - Client 模块通过模块加载器加载，实时界面中两个条目都处于活动状态：`shell.overlay` →
   `kappy-pixel-companions`（order 50）和 `conversation.input.dock` →
   `kappy-pixel-companions.bridge`（order 80）。
-- `node tools/build-client.mjs` 能重现已提交的 `client.js`（约 72 KiB），且
-  `npm test` 运行 20 个测试——8 个场景规则、8 个纯辅助函数测试（含 `clampScale` 范围
-  处理）和 4 个翻译完整性测试——全部通过。
+- `node tools/build-client.mjs` 能重现已提交的 `client.js`（约 94 KiB），且
+  `npm test` 运行 28 个测试——8 个场景规则、8 个纯辅助函数测试（含 `clampScale` 范围
+  处理）、5 个翻译完整性测试和 7 个反应映射测试——全部通过。
 - Harness 素材路由会把生成的精灵引用
   （`plugins/dsh-pixel-companions/assets/<character>/<scene>.<webp|png>?v=<sha1-8>`）
-  以 `200 image/webp` / `image/png` 提供；`src/client/assets.generated.ts` 约 5 KiB。
+  以 `200 image/webp` / `image/png` 提供；`src/client/assets.generated.ts` 约 11 KiB。
 - 性能/逻辑检查：`publishFacts` 会做浅比较并跳过未变化的快照；输入最多每 5 秒刷新一次闲置计时器，且不改变场景；标签页隐藏时 1 秒时钟和桌面探测/心跳暂停，恢复可见时继续；回答预览在运行
   期间冻结，只在停止时发布一次；报告药丸带有 `role="status"` 和 `aria-live="polite"`。
   用户活动（打草稿、点击/拖动）会刷新闲置计时器，但不改变场景。
@@ -47,7 +47,7 @@ tsdown/tsc 构建。这个仓库是**可安装形态**，已在运行中的 Harn
   流显示 `Typing`，运行中的工具显示 `Working`，结束的轮次显示粘性单行报告，其详情按钮
   打开有长度上限的纯文本面板，悬停伴侣会在 320 ms 停留后关闭报告，新的一轮会重新打开它，
   悬停消息框会发送消息并恢复之前的草稿。
-- v3 素材已做无头检查：全部 62 个精灵文件都能以 192×128 RGBA 透明格式解码，每个动画
+- 素材已做无头检查：全部 134 个精灵文件都能以 192×128 RGBA 透明格式解码，每个动画
   WebP 至少有 2 帧；无头拖动测试显示 Deepy 在拖动时切换到 `roaming`、松开后回到场景
   （Whale Girl 不变）。
 - 可选的桌面半边已做无头检查：
@@ -165,8 +165,9 @@ Chat snapshot 字段、navigation response 和输入框动作都已经是公开�
     窗口中绘制同一个精灵，并通过仅限回环的 HTTP bridge（`src/client/desktop.ts`）从页面
     接收呈现状态。它默认关闭，不携带提示、草稿、消息或会话数据，也不需要新的 Harness
     API。
-11. **v3 素材与 roaming 移动视觉。** `assets/` 现在包含 30 个 girl + 30 个 whale 精灵
-    （每个角色 15 个场景），外加可选的 `assets/whale/roaming.{webp,png}` 对。拖动 Deepy
+11. **素材、反应与 roaming 移动视觉。** `assets/` 现在包含 30 个 girl + 30 个 whale 场景
+    精灵（每个角色 15 个场景 + 18 个反应动画），外加可选的
+    `assets/whale/roaming.{webp,png}` 对。拖动 Deepy
     时——无论在 overlay 还是桌面窗口中——无书桌的 `roaming` 动画会替代场景，固定家具不会
     跟着移动，松开后场景恢复。`roaming` 不是场景：15 状态机、`deriveScene`、bridge 载荷
     和桌面协议都没有改变，也没有新增 Harness API。
@@ -181,7 +182,7 @@ Chat snapshot 字段、navigation response 和输入框动作都已经是公开�
 13. **素材路由交付与性能优化。** 精灵不再内嵌：清单保存
     `plugins/dsh-pixel-companions/assets/...?v=<sha1-8>` 引用，由 Harness 素材路由提供，
     并通过 `require.asset` 解析，失败时回退到原始引用。已提交的 `client.js` 从约 3.3 MB
-    降到约 72 KiB；精灵按场景获取并不可变缓存，内容哈希会使缓存失效。bridge 对事实做浅
+    降到约 94 KiB；精灵按场景获取并不可变缓存，内容哈希会使缓存失效。bridge 对事实做浅
     比较；标签页隐藏时 1 秒时钟和桌面探测/心跳暂停；回答预览只在停止时发布一次；用户活动会刷新闲置计时器但不改变场景（输入最多每 5 秒一次）；报告药丸通过 `role="status"` / `aria-live="polite"`
     播报。没有新增 Harness API；15 个场景的集合、场景规则、悬停框、报告、桌面 bridge 和
     桌面应用都没有改变。
@@ -200,8 +201,9 @@ Chat snapshot 字段、navigation response 和输入框动作都已经是公开�
 
 ## 已知限制
 
-- 已提交的 JS bundle 约 72 KiB。62 个精灵文件（30 个 girl + 32 个 whale，包含可选的
-  roaming 对）由插件素材路由单独提供并不可变缓存；文件变化时 `?v=<sha1-8>` 会使缓存
+- 已提交的 JS bundle 约 94 KiB。134 个精灵文件（66 个 girl + 68 个 whale：每个角色
+  15 个场景和 18 个反应，包含可选的 roaming 对）由插件素材路由单独提供并不可变缓存；
+  文件变化时 `?v=<sha1-8>` 会使缓存
   失效。这让启动开销很低，但也意味着 `assets/` 树必须随包发布。
 - 场景映射无法区分“完成”与“停止/取消”：客户端目前只把 `running` 暴露为布尔值。因此
   `success` 场景的含义是“无错误地停止”。
